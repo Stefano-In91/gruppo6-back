@@ -20,11 +20,13 @@ class ArtistController extends Controller
      */
     public function index()
     {
-        if( Artist::where('user_id', Auth::id()) ) {
-            $artist = Artist::where('user_id', Auth::id())->get();
+        // Cerca se la pagina artist linkata all'user id è stata creata e nel caso manda a index
+        if( Artist::firstWhere('user_id', Auth::id()) ) {
+            $artist = Artist::firstWhere('user_id', Auth::id())->get();
 
             return view('admin.artist.index', compact('artist'));
-        } else {
+        } else { 
+        // Se non è ancora stata creata reindirizza a create
             return view('admin.artist.create');
         }
 
