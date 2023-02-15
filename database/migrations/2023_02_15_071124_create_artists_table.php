@@ -19,7 +19,7 @@ return new class extends Migration
             
             $table->string('artist_nickname', 30)->unique();
             $table->text('introduction_text');
-            $table->string('profile_photo')->nullable();
+            $table->string('profile_photo')->nullable();            
             $table->string('slug');
 
 
