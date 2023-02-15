@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Artist;
+use App\Models\User;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StoreArtistRequest;
 use App\Http\Requests\UpdateArtistRequest;
 use Illuminate\Support\Facades\Storage;
@@ -17,7 +20,14 @@ class ArtistController extends Controller
      */
     public function index()
     {
-        //
+        if( Artist::where('user_id', Auth::id()) ) {
+            $artist = Artist::where('user_id', Auth::id())->get();
+
+            return view('admin.artist.index', compact('artist'));
+        } else {
+            return view('admin.artist.create');
+        }
+
     }
 
     /**
@@ -27,7 +37,7 @@ class ArtistController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.artist.create');
     }
 
     /**
@@ -38,18 +48,22 @@ class ArtistController extends Controller
      */
     public function store(StoreArtistRequest $request)
     {
-        //
-    }
+        $userId = Auth::id();
+        $data = $request->validated();
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Artist  $artist
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Artist $artist)
-    {
-        //
+        $new_artist = new Artist();
+        $new_artist->fill($data);
+        $new_artist->user_id = $userId;
+        $new_artist->slug = Str::slug($new_artist->artist_nickname);
+
+        if( isset($data['profile_photo']) ) {            
+            $img_path = Storage::disk('public')->put('uploads', $data['profile_photo']);
+            $new_artist->profile_photo = $img_path;
+        }
+
+        $new_artist->save();
+
+        return redirect()->route('admin.artist.index')->with('message', 'Benvenuto');
     }
 
     /**
@@ -60,7 +74,7 @@ class ArtistController extends Controller
      */
     public function edit(Artist $artist)
     {
-        //
+        return view('admin.artist.edit', compact('artist'));
     }
 
     /**
@@ -72,7 +86,19 @@ class ArtistController extends Controller
      */
     public function update(UpdateArtistRequest $request, Artist $artist)
     {
-        //
+        $data = $request->validated();
+
+        if( isset($data['profile_photo']) ) {            
+            $img_path = Storage::disk('public')->put('uploads', $data['profile_photo']);
+            $artist->profile_photo = $img_path;
+        }
+
+        $artist->update($data);
+        $artist->slug = Str::slug($artist->artist_nickname);
+
+        $artist->save();
+
+        return redirect()->route('admin.artist.index')->with('message', 'Artista aggiornato correttamente');
     }
 
     /**
@@ -83,6 +109,12 @@ class ArtistController extends Controller
      */
     public function destroy(Artist $artist)
     {
-        //
+        if( $artist->profile_photo ) {
+            Storage::disk('public')->delete($artist->profile_photo);
+        }
+
+        $artist->delete();
+
+        return redirect()->route('admin.dashboard')->with('message', 'Artista cancellato');
     }
 }
