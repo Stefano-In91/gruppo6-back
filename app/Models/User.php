@@ -12,6 +12,10 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    public function artist() {
+        return $this->hasOne(Artist::class);
+    }
+
     /**
      * The attributes that are mass assignable.
      *
@@ -19,6 +23,9 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'surname',
+        'address',
+        'phone_number',
         'email',
         'password',
     ];
