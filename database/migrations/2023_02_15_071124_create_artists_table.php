@@ -15,15 +15,13 @@ return new class extends Migration
     {
         Schema::create('artists', function (Blueprint $table) {
             $table->id();
-
-            $table->string('name', 20);
-            $table->string('surname', 20);
-            $table->string('address', 50);
+            $table->foreignId('user_id')->constrained();
+            
             $table->string('artist_nickname', 30)->unique();
-            $table->string('phone_number', 15);
             $table->text('introduction_text');
             $table->string('profile_photo')->nullable();
             $table->string('slug');
+
 
             $table->timestamps();
         });
