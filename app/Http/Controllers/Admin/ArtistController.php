@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Artist;
-use App\Models\User;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StoreArtistRequest;
@@ -22,14 +21,13 @@ class ArtistController extends Controller
     {
         // Cerca se la pagina artist linkata all'user id è stata creata e nel caso manda a index
         if( Artist::firstWhere('user_id', Auth::id()) ) {
-            $artist = Artist::firstWhere('user_id', Auth::id())->get();
+            $artist = Artist::firstWhere('user_id', Auth::id());
 
             return view('admin.artist.index', compact('artist'));
         } else { 
-        // Se non è ancora stata creata reindirizza a create
+        // Se non è ancora stata creata pagina Artista collegata a User reindirizza a create
             return view('admin.artist.create');
         }
-
     }
 
     /**
@@ -117,6 +115,6 @@ class ArtistController extends Controller
 
         $artist->delete();
 
-        return redirect()->route('admin.dashboard')->with('message', 'Artista cancellato');
+        return redirect()->route('admin.dashboard')->with('message', 'Artista cancellato correttamente');
     }
 }

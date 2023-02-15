@@ -13,5 +13,5 @@ class Artist extends Model
         return $this->belongsTo(User::class);
     }
 
-    protected $guarded = ['slug'];
+    protected $guarded = ['slug', 'user_id', 'profile_photo'];
 }

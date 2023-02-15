@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\ArtistController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,7 +22,9 @@ Route::get('/', function () {
 
 Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () {
     Route::get('/dashboard', function () {
-        return view('admin.dashboard');
+        $user = Auth::user();
+
+        return view('admin.dashboard', compact('user'));
     })->name('dashboard');
 
     Route::resource('artist', ArtistController::class)->parameters(['artist' => 'artist:slug']);
