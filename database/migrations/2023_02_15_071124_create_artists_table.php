@@ -18,7 +18,9 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained();
             
             $table->string('artist_nickname', 30)->unique();
-            $table->text('introduction_text');
+            $table->text('introduction_text', 1000);
+            $table->string('address', 50)->nullable();
+            $table->string('phone_number', 20)->nullable();
             $table->string('profile_photo')->nullable();            
             $table->string('slug');
 

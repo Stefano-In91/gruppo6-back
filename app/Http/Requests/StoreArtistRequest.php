@@ -25,8 +25,10 @@ class StoreArtistRequest extends FormRequest
     {
         return [
             'artist_nickname' => 'required|unique:artists|max:30',
-            'introduction_text' => 'required',
-            'profile_photo' => 'nullable|image|max:4096'
+            'introduction_text' => 'required|string|max:1000',
+            'profile_photo' => 'nullable|image|max:4096',
+            'address' => 'required|string|max:50',
+            'phone_number' => 'required|string|max:20'
         ];
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdateArtistRequest extends FormRequest
 {
@@ -24,9 +25,11 @@ class UpdateArtistRequest extends FormRequest
     public function rules()
     {
         return [
-            'artist_nickname' => 'required|unique:artists|max:30',
-            'introduction_text' => 'required',
-            'profile_photo' => 'nullable|image|max:4096'
+            'artist_nickname' => ['required', Rule::unique('artists')->ignore($this->artist), 'string', 'max:30'],
+            'introduction_text' => 'required|string|max:1000',
+            'profile_photo' => 'nullable|image|max:4096',
+            'address' => 'required|string|max:50',
+            'phone_number' => 'required|string|max:20'
         ];
     }
 }
