@@ -28,6 +28,8 @@ Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () 
     })->name('dashboard');
 
     Route::resource('artist', ArtistController::class)->parameters(['artist' => 'artist:slug']);
+    Route::resource('tecnhiques', TechniqueController::class)->parameters(['technique' => 'technique:slug']);
+
 });
 
 require __DIR__.'/auth.php';
