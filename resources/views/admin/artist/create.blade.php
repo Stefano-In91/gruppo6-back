@@ -46,6 +46,16 @@
         id="profile_photo" name="profile_photo">
     </div>
 
+    <div class="mb-3">
+      @foreach ($techniques as $technique)
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="checkbox" id="{{ $technique->slug }}}"
+            name="techniques[]" value="{{ $technique->id }}">
+          <label class="form-check-label" for="{{ $technique->slug }}}">{{ $technique->name }}</label>
+        </div>
+      @endforeach
+    </div>
+
     <button type="submit" class="btn btn-primary">Salva</button>
     <button type="reset" class="btn btn-secondary">Reset</button>
   </form>

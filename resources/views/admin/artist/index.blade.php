@@ -25,6 +25,19 @@
       <div class="artist__info">
         <h3>{{ $artist->artist_nickname }}</h3>
         <p>{{ $artist->introduction_text }}</p>
+
+        @if ($artist->techniques->isNotEmpty())
+          <h3>Tecniche utilizzate:</h3>
+          <ul>
+            @foreach ($artist->techniques as $technique)
+              <li><a href="{{ route('admin.techniques.show', $technique) }}">{{ $technique->name }}</a>
+              </li>
+            @endforeach
+          </ul>
+        @else
+          <h3>Nessuna Tecnica Specificata</h3>
+        @endif
+
         <div class="artist__review">
           {{-- stelline  --}}
           <div class="artist__review__stars">

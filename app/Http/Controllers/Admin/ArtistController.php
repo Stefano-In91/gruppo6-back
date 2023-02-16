@@ -8,6 +8,7 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StoreArtistRequest;
 use App\Http\Requests\UpdateArtistRequest;
+use App\Models\Technique;
 use Illuminate\Support\Facades\Storage;
 
 class ArtistController extends Controller
@@ -37,7 +38,9 @@ class ArtistController extends Controller
      */
     public function create()
     {
-        return view('admin.artist.create');
+        $techniques = Technique::all();
+
+        return view('admin.artist.create', compact('techniques'));
     }
 
     /**
@@ -63,6 +66,9 @@ class ArtistController extends Controller
 
         $new_artist->save();
 
+        $techniques = isset($data['techniques']) ? $data['techniques'] : [];
+        $new_artist->techniques()->sync($techniques);
+
         return redirect()->route('admin.artist.index')->with('message', "Benvenuto $new_artist->name.");
     }
 
@@ -74,7 +80,9 @@ class ArtistController extends Controller
      */
     public function edit(Artist $artist)
     {
-        return view('admin.artist.edit', compact('artist'));
+        $techniques = Technique::all();
+
+        return view('admin.artist.edit', compact('artist', 'techniques'));
     }
 
     /**
@@ -97,6 +105,9 @@ class ArtistController extends Controller
         $artist->slug = Str::slug($artist->artist_nickname);
 
         $artist->save();
+
+        $techniques = isset($data['techniques']) ? $data['techniques'] : [];
+        $artist->techniques()->sync($techniques);
 
         return redirect()->route('admin.artist.index')->with('message', 'Artista aggiornato correttamente.');
     }
