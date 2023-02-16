@@ -13,5 +13,9 @@ class Artist extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function techniques() {
+        return $this-> belongsToMany(Technique::class);
+    }
+
     protected $guarded = ['slug', 'user_id', 'profile_photo'];
 }
