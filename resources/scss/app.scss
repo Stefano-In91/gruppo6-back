@@ -1,1 +1,13 @@
-@import '~bootstrap/scss/bootstrap'
+/*-------------------
+    IMPORT bootstrap
+-------------------*/
+@import "~bootstrap/scss/bootstrap";
+
+/*-------------------
+    IMPORT PARTIALS
+-------------------*/
+@import "./partials/00variables.scss";
+@import "./partials/01reset.scss";
+@import "./partials/02mixins.scss";
+@import "./partials/03typography.scss";
+@import "./partials/04layout.scss";
