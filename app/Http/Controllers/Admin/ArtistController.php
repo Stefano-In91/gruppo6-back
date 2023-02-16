@@ -27,7 +27,8 @@ class ArtistController extends Controller
             return view('admin.artist.index', compact('artist'));
         } else { 
         // Se non è ancora stata creata pagina Artista collegata a User reindirizza a create
-            return view('admin.artist.create');
+            $techniques = Technique::all();
+            return view('admin.artist.create', compact('techniques'));
         }
     }
 
