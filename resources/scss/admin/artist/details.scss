@@ -1,0 +1,8 @@
+/*--------------------------
+   admin artist details page
+---------------------------*/
+.artist {
+    &__avatar {
+        @include circle-img(12rem);
+    }
+}

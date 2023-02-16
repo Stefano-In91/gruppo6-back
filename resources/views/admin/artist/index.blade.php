@@ -1,11 +1,25 @@
 @extends('layouts.admin')
 
 @section('content')
+
   <h1>Dettagli Artista</h1>
+
   @if (session('message'))
     <div class="alert alert-success">{{ session('message') }}</div>
   @endif
-  <table>
+  <div class="artist">
+    <div class="artist__info">
+      <div class="artist__avatar">
+        @if ($artist->profile_photo)
+          <img src="{{asset("storage/$artist->profile_photo")}}" alt="{{$artist->artist_nickname}}" >
+        @else
+          <img src="https://via.placeholder.com/100" alt="placeholder" >
+        @endif
+      </div>
+    </div>
+  </div>
+  
+  <table class="d-none">
     <thead>
       <tr>
         <th scope="col">#</th>
