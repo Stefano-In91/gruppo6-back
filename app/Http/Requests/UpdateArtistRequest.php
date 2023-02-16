@@ -4,6 +4,8 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
+use App\Models\Artist;
+use Illuminate\Support\Facades\Auth;
 
 class UpdateArtistRequest extends FormRequest
 {
@@ -14,7 +16,11 @@ class UpdateArtistRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        if( Artist::firstWhere('user_id', Auth::id()) ){
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**

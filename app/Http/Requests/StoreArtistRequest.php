@@ -3,6 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App\Models\Artist;
+use Illuminate\Support\Facades\Auth;
 
 class StoreArtistRequest extends FormRequest
 {
@@ -13,7 +15,11 @@ class StoreArtistRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        if( Artist::firstWhere('user_id', Auth::id()) ){
+            return false;
+        } else {
+            return true;
+        }
     }
 
     /**
