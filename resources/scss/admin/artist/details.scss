@@ -1,0 +1,28 @@
+/*--------------------------
+   admin artist details page
+---------------------------*/
+.details {
+    .artist {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+        &__avatar {
+            @include circle-img(12rem);
+        }
+        &__review {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            &__stars {
+                color: rgb(218, 155, 39);
+                font-size: 1.4rem;
+            }
+            a {
+                color: var(--primary-color);
+                &:hover {
+                    color: var(--primary-color-500);
+                }
+            }
+        }
+    }
+}

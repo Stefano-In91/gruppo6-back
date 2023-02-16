@@ -1,1 +1,28 @@
-@import '~bootstrap/scss/bootstrap'
+/*-------------------
+    IMPORT bootstrap
+-------------------*/
+@import "~bootstrap/scss/bootstrap";
+
+/*-------------------
+    IMPORT PARTIALS
+-------------------*/
+@import "./partials/00variables.scss";
+@import "./partials/01reset.scss";
+@import "./partials/02mixins.scss";
+@import "./partials/03typography.scss";
+@import "./partials/04layout.scss";
+
+//gli import vanno dal meno specifico al più specifico
+
+/*--------------------------------
+    IMPORT Dashboard layout
+-----------------------------*/
+//...
+
+//inserite il vostro import con attenzione
+
+/*--------------------------------
+    IMPORT admin/artist
+-----------------------------*/
+@import "./admin/artist/welcome.scss";
+@import "./admin//artist/details.scss";
