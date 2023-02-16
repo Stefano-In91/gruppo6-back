@@ -55,6 +55,7 @@
           class="col-md-3 col-lg-2 d-md-block bg-dark navbar-dark sidebar collapse">
           <div class="position-sticky pt-3">
             <ul class="nav flex-column">
+
               <li class="nav-item">
                 <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.dashboard' ? 'bg-secondary' : '' }}"
                   href="{{ route('admin.dashboard') }}">
@@ -62,13 +63,23 @@
                   Dashboard
                 </a>
               </li>
+
               <li class="nav-item">
                 <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.artist.index' ? 'bg-secondary' : '' }}"
                   href="{{ route('admin.artist.index') }}">
                   <i class="fa-solid fa-list fa-lg fa-fw"></i>
-                  Artist
+                  Artista
                 </a>
               </li>
+
+              <li class="nav-item">
+                <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.techniques.index' ? 'bg-secondary' : '' }}"
+                  href="{{ route('admin.techniques.index') }}">
+                  <i class="fa-solid fa-list fa-lg fa-fw"></i>
+                  Tecniche
+                </a>
+              </li>
+
             </ul>
           </div>
         </nav>

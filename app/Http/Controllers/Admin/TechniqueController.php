@@ -17,7 +17,9 @@ class TechniqueController extends Controller
      */
     public function index()
     {
-        //
+        $techniques = Technique::all();
+
+        return view('admin.techniques.index', compact('techniques'));
     }
 
     /**
@@ -27,7 +29,7 @@ class TechniqueController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.techniques.create');
     }
 
     /**
@@ -38,7 +40,14 @@ class TechniqueController extends Controller
      */
     public function store(StoreTechniqueRequest $request)
     {
-        //
+        $data = $request->validated();
+
+        $new_technique = new Technique();
+        $new_technique->fill($data);
+        $new_technique->slug = Str::slug($new_technique->name);
+        $new_technique->save();
+
+        return redirect()->route('admin.techniques.index')->with('message', "$new_technique->name aggiunta con successo.");
     }
 
     /**
@@ -49,7 +58,7 @@ class TechniqueController extends Controller
      */
     public function show(Technique $technique)
     {
-        //
+        return view('admin.techniques.show', compact('technique'));
     }
 
     /**
@@ -60,7 +69,7 @@ class TechniqueController extends Controller
      */
     public function edit(Technique $technique)
     {
-        //
+        return view('admin.techniques.edit', compact('technique'));
     }
 
     /**
@@ -72,7 +81,14 @@ class TechniqueController extends Controller
      */
     public function update(UpdateTechniqueRequest $request, Technique $technique)
     {
-        //
+        $old_name = $technique->name;
+
+        $data = $request->validated();
+
+        $technique->slug = Str::slug($data['name']);
+        $technique->update($data);
+
+        return redirect()->route('admin.techniques.index')->with('message', "La Tecnica $old_name è stata aggiornata.");
     }
 
     /**
@@ -83,6 +99,10 @@ class TechniqueController extends Controller
      */
     public function destroy(Technique $technique)
     {
-        //
+        $old_name = $technique->name;
+
+        $technique->delete();
+
+        return redirect()->route('admin.techniques.index')->with('message', "La tecnica $old_name è stata cancellata." );
     }
 }

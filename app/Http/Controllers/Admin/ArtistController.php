@@ -63,7 +63,7 @@ class ArtistController extends Controller
 
         $new_artist->save();
 
-        return redirect()->route('admin.artist.index')->with('message', 'Benvenuto');
+        return redirect()->route('admin.artist.index')->with('message', "Benvenuto $new_artist->name.");
     }
 
     /**
@@ -98,7 +98,7 @@ class ArtistController extends Controller
 
         $artist->save();
 
-        return redirect()->route('admin.artist.index')->with('message', 'Artista aggiornato correttamente');
+        return redirect()->route('admin.artist.index')->with('message', 'Artista aggiornato correttamente.');
     }
 
     /**
@@ -115,6 +115,6 @@ class ArtistController extends Controller
 
         $artist->delete();
 
-        return redirect()->route('admin.dashboard')->with('message', 'Artista cancellato correttamente');
+        return redirect()->route('admin.dashboard')->with('message', 'Artista cancellato correttamente.');
     }
 }
