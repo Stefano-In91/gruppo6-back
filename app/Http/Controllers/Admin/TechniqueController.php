@@ -69,7 +69,7 @@ class TechniqueController extends Controller
      */
     public function edit(Technique $technique)
     {
-        return view('admin.technique.edit', compact('tecnhique'));
+        return view('admin.techniques.edit', compact('technique'));
     }
 
     /**
@@ -88,7 +88,7 @@ class TechniqueController extends Controller
         $technique->slug = Str::slug($data['name']);
         $technique->update($data);
 
-        return redirect()->route('admin.technique.index')->with('message', "La Tecnica $old_name è stata aggiornata.");
+        return redirect()->route('admin.techniques.index')->with('message', "La Tecnica $old_name è stata aggiornata.");
     }
 
     /**

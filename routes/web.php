@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\ArtistController;
+use App\Http\Controllers\Admin\TechniqueController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -28,7 +29,7 @@ Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () 
     })->name('dashboard');
 
     Route::resource('artist', ArtistController::class)->parameters(['artist' => 'artist:slug']);
-    Route::resource('tecnhiques', TechniqueController::class)->parameters(['technique' => 'technique:slug']);
+    Route::resource('techniques', TechniqueController::class)->parameters(['techniques' => 'technique:slug']);
 
 });
 
