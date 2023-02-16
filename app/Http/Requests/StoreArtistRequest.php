@@ -34,7 +34,8 @@ class StoreArtistRequest extends FormRequest
             'introduction_text' => 'required|string|max:1000',
             'profile_photo' => 'nullable|image|max:4096',
             'address' => 'required|string|max:50',
-            'phone_number' => 'required|string|max:20'
+            'phone_number' => 'required|string|max:20',
+            'techniques' => 'nullable|exists:techniques,id'
         ];
     }
 }

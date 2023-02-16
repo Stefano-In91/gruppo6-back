@@ -54,7 +54,25 @@
         id="profile_photo" name="profile_photo">
     </div>
 
-    <button type="submit" class="btn btn-primary">Salva</button>
-    <button type="reset" class="btn btn-secondary">Reset</button>
+    <div class="mb-3">
+      @foreach ($techniques as $technique)
+        <div class="form-check form-check-inline">
+          @if ($errors->any())
+            <input class="form-check-input" type="checkbox" id="{{ $technique->slug }}}"
+              name="techniques[]" value="{{ $technique->id }}"
+              {{ in_array($technique->id, old('techniques', [])) ? 'checked' : '' }}>
+          @else
+            <input class="form-check-input" type="checkbox" id="{{ $technique->slug }}}"
+              name="techniques[]" value="{{ $technique->id }}"
+              {{ $artist->techniques->contains($technique->id) ? 'checked' : '' }}>
+          @endif
+
+          <label class="form-check-label"
+            for="{{ $technique->slug }}}">{{ $technique->name }}</label>
+        </div>
+      @endforeach
+
+      <button type="submit" class="btn btn-primary">Salva</button>
+      <button type="reset" class="btn btn-secondary">Reset</button>
   </form>
 @endsection
