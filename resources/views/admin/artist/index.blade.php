@@ -27,10 +27,10 @@ $average_review = 4;
 			<div class="artist__info">
 				<h3>{{$artist->artist_nickname}}</h3>
 				{{-- descrizione intro artista --}}
-				<div id="introduction_text" >{{$artist->introduction_text}} Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quia ipsum repudiandae saepe alias facilis sint dignissimos aliquam accusamus. Earum qui non, dignissimos sed delectus incidunt harum eveniet? Sed, optio laborum! Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eaque mollitia nostrum ut iusto! Temporibus autem ratione error unde in quae deleniti nobis aperiam repellendus dolorem voluptates, quam quos facilis id. </div>				
+				<div id="introduction_text" >{{$artist->introduction_text}} dasd d aolihwoild  asjdoil  daiopjoid a ajwdaiojd oiaw  awiojdoiajjdoaijwo i dawoijdoi </div>				
 				<script>	
 					const text = document.getElementById('introduction_text');
-					const textLength = 100; //mostra solo i primi 100 caratteri
+					const textLength = 100; //quando supera 100 caratteri si verifica la condizione e SCATTA la feature
 					let isClicked = false;
 					const textInnerhtml = text.textContent;
 
