@@ -1,6 +1,13 @@
 /*--------------------------
    admin artist details page
 ---------------------------*/
+.top-bar {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
 .details {
     display: flex;
     justify-content: space-between;
@@ -53,11 +60,4 @@
             }
         }
     }
-
-    //     #introduction_text {
-    //         white-space: nowrap;
-    //         overflow: hidden;
-    //         text-overflow: ellipsis;
-    //         cursor: pointer;
-    //     }
 }

@@ -10,9 +10,19 @@ $average_review = 4;
 @if (session('message'))
 <div class="alert alert-success">{{ session('message') }}</div>
 @endif
-<div class="container-fluid">
-	<h1>Dettagli Artista</h1>
-	<div class="details | row">
+	{{-- top bar & titolo --}}
+	<div class="top-bar">
+		<h1>Dettagli Artista</h1>
+		<a href="{{ route('admin.artist.edit', $artist) }}" class="btn btn-warning">
+			<i class="fa-solid fa-pen-to-square"></i>
+		</a>
+		<button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modal-{{$artist->id}}">
+			<i class="fa-solid fa-trash-can"></i>
+		 </button>
+	</div>
+	{{-- /top bar & titolo --}}
+	{{-- card dettagli --}}
+	<div class="details">
 		<div class="artist | p-3 rounded-3 col-12 col-xxl-6">
 			{{-- foto profilo --}}
 			<div class="artist__avatar">
@@ -27,34 +37,34 @@ $average_review = 4;
 			<div class="artist__info">
 				<h3>{{$artist->artist_nickname}}</h3>
 				{{-- descrizione intro artista --}}
-				<div id="introduction_text" >{{$artist->introduction_text}} dasd d aolihwoild  asjdoil  daiopjoid a ajwdaiojd oiaw  awiojdoiajjdoaijwo i dawoijdoi </div>				
+				<div id="introduction_text" >{{$artist->introduction_text}}</div>				
 				<script>	
-					const text = document.getElementById('introduction_text');
-					const textLength = 100; //quando supera 100 caratteri si verifica la condizione e SCATTA la feature
-					let isClicked = false;
-					const textInnerhtml = text.textContent;
+						const text = document.getElementById('introduction_text');
+						const textLength = 100; //quando supera 100 caratteri si verifica la condizione e SCATTA la feature
+						let isClicked = false;
+						const textInnerhtml = text.textContent;
 
-					if (text.textContent.length > textLength ) {
-						text.style.cursor = "pointer";
-						text.style.whiteSpace = "nowrap";
-						text.style.overflow = "hidden";
-						text.style.textOverflow = "ellipsis";
+						if (text.textContent.length > textLength ) {
+							text.style.cursor = "pointer";
+							text.style.whiteSpace = "nowrap";
+							text.style.overflow = "hidden";
+							text.style.textOverflow = "ellipsis";
 
-						text.addEventListener("click", function() {
-						isClicked = !isClicked;
-							if (isClicked) {
-									text.style.whiteSpace = "normal";
-									text.style.overflow = "visible";
-									text.style.textOverflow = "clip";
-									text.textContent =  `${textInnerhtml} Nascondi`;
-							} else {
-									text.style.whiteSpace = "nowrap";
-									text.style.overflow = "hidden";
-									text.style.textOverflow = "ellipsis";
-									text.textContent = text.textContent.slice(0, textLength);
-							}
-    				});
-				}
+							text.addEventListener("click", function() {
+							isClicked = !isClicked;
+								if (isClicked) {
+										text.style.whiteSpace = "normal";
+										text.style.overflow = "visible";
+										text.style.textOverflow = "clip";
+										text.textContent =  `${textInnerhtml} Nascondi`;
+								} else {
+										text.style.whiteSpace = "nowrap";
+										text.style.overflow = "hidden";
+										text.style.textOverflow = "ellipsis";
+										text.textContent = text.textContent.slice(0, textLength);
+								}
+						});
+					}
 				</script>
 				{{-- /descrizione intro artista --}}
 				<div class="artist__contacts">
@@ -67,8 +77,8 @@ $average_review = 4;
 						</li>
 					</ul>
 				</div>
-	
-				<div class="artist__review | mt-auto">
+				
+				<div class="artist__review ">
 					{{-- stelline  --}}
 					<div class="artist__review__stars">
 						Valutazione:
@@ -86,51 +96,30 @@ $average_review = 4;
 		</div>
 		
 	</div>
-</div>
-  
-  <table class="d-none">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col" class="col">Nome</th>
-        <th scope="col" class="col">Introduzione</th>
-        <th scope="col" class="col">Indirizzo</th>
-        <th scope="col" class="col">Numero di Telefono</th>
-        <th scope="col" class="col">Foto Profilo</th>
-        <th scope="col" class="col">Azioni</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">></th>
-        <td>{{ $artist->artist_nickname }}</td>
-        <td>{{ $artist->introduction_text }}</td>
-        <td>{{ $artist->address }}</td>
-        <td>{{ $artist->phone_number }}</td>
+	{{-- /card dettagli --}}
 
-        @if ($artist->profile_photo)
-        <td> 
-          <img src="{{asset("storage/$artist->profile_photo")}}" alt="{{$artist->artist_nickname}}">
-        </td>
-        @else
-        <td>
-          <img src="https://via.placeholder.com/100" alt="placeholder">
-        </td>
-        @endif
-        
-        <td>
-          <a href="{{ route('admin.artist.edit', $artist) }}"><button
-              class="btn btn-secondary">Modifica</button></a>
-          <form action="{{ route('admin.artist.destroy', $artist) }}" method="POST" class="d-inline">
-
-            @csrf
-            @method('DELETE')
-
-            <button type="submit" class="btn btn-danger">Elimina</button>
-
-          </form>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+	
+	{{-- modal --}}
+	<div class="modal fade" id="modal-{{$artist->id}}" tabindex="-1">
+	 <div class="modal-dialog">
+		<div class="modal-content">
+		  <div class="modal-header">
+			 <h1 class="modal-title fs-5" id="exampleModalLabel">Conferma</h1>
+			 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+		  </div>
+		  <div class="modal-body">
+			 Sei sicuro di eliminare l'artista "{{$artist->artist_nickname}}"?
+		  </div>
+		  <div class="modal-footer">
+			  <form action="{{ route('admin.artist.destroy', $artist) }}" method="POST" class="d-inline-block">
+				 @csrf
+				 @method('DELETE')
+				 <button type="submit" class="btn btn-primary">Si</button>
+			  </form>
+			 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+		  </div>
+		</div>
+	 </div>
+  </div>
+	{{-- /modal --}}
 @endsection
