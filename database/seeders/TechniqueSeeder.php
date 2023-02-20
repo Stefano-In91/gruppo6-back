@@ -27,13 +27,11 @@ class TechniqueSeeder extends Seeder
 
         foreach ($techniques as $technique) {
             
-            for ($i=0; $i < 20 ; $i++) { 
-                $new_technique = new Technique();
-                $new_technique->description -> $technique = $faker->text(1000);
-                $new_technique->slug = Str::slug($new_technique -> name);
-                $new_technique->save();
-            }
+                 $new_technique = new Technique();
+                 $new_technique->name = $technique;
+                 $new_technique->description = $faker->text(1000);
+                 $new_technique->slug = Str::slug($new_technique -> name);
+                 $new_technique->save();    
         }
-
     }
 }

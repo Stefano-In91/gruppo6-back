@@ -6,6 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\User;
 use Faker\Generator as Faker;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Validation\Rules\Unique;
 
 class UserSeeder extends Seeder
@@ -17,6 +18,9 @@ class UserSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
+        Schema::disableForeignKeyConstraints();
+        User::truncate();
+        Schema::enableForeignKeyConstraints();
         for ($i=0; $i < 20 ; $i++) { 
             $new_user = new User();
             $new_user->name = $faker->firstName(20);
