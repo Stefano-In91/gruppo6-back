@@ -23,15 +23,15 @@ class TechniqueSeeder extends Seeder
         Technique::truncate();
         Schema::enableForeignKeyConstraints();
 
-        $techniques = ['Music', 'Picture', 'Acting', 'Sculpture'];
+        $techniques = ['Music', 'Painting', 'Acting', 'Sculpture'];
 
         foreach ($techniques as $technique) {
-            
-                 $new_technique = new Technique();
-                 $new_technique->name = $technique;
-                 $new_technique->description = $faker->text(1000);
-                 $new_technique->slug = Str::slug($new_technique -> name);
-                 $new_technique->save();    
+
+            $new_technique = new Technique();
+            $new_technique->name = $technique;
+            $new_technique->description = $faker->text(1000);
+            $new_technique->slug = Str::slug($new_technique->name);
+            $new_technique->save();
         }
     }
 }
