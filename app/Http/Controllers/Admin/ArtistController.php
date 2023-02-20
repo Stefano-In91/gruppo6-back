@@ -73,6 +73,19 @@ class ArtistController extends Controller
         return redirect()->route('admin.artist.index')->with('message', "Benvenuto $new_artist->name.");
     }
 
+    
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Artist $artist)
+    {
+
+        return view('admin.artist.show', compact('artist'));
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
