@@ -1,26 +1,61 @@
 /*--------------------------
    admin artist details page
 ---------------------------*/
+.top-bar {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
 .details {
+    display: flex;
+    justify-content: space-between;
     .artist {
         display: flex;
         align-items: center;
-        gap: 2rem;
+        border: 2px solid var(--primary-color-500);
+        &__info {
+            width: calc(100% - 12rem);
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            h3 {
+                font-size: 3rem;
+            }
+        }
         &__avatar {
             @include circle-img(12rem);
         }
         &__review {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
             &__stars {
-                color: rgb(218, 155, 39);
-                font-size: 1.4rem;
+                i {
+                    font-size: 1.4rem;
+                    color: rgb(218, 155, 39);
+                    margin-inline-end: 0.5rem;
+                }
             }
             a {
                 color: var(--primary-color);
                 &:hover {
                     color: var(--primary-color-500);
+                }
+            }
+            @media (width > 992px) {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+        }
+
+        &__contacts {
+            ul {
+                @include reset-list;
+                li {
+                    display: flex;
+                    gap: 0.8rem;
+                    align-items: center;
                 }
             }
         }
