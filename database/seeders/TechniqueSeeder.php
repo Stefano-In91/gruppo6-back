@@ -29,7 +29,6 @@ class TechniqueSeeder extends Seeder
             
             for ($i=0; $i < 20 ; $i++) { 
                 $new_technique = new Technique();
-                $new_technique->user_id -> $technique = $faker->name(30);
                 $new_technique->description -> $technique = $faker->text(1000);
                 $new_technique->slug = Str::slug($new_technique -> name);
                 $new_technique->save();
