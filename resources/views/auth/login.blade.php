@@ -179,10 +179,12 @@
 
       <div>
         <div class="container-fluid text-center bg-dark">
-          <div class="row align-items-start">
+          <div class="row g-2 align-items-start">
 
-            <div class="col card m-5 plans-card" style="width: 18rem;">
-              <img class="img-card" src="https://pbs.twimg.com/media/FjSMa9oXkAI13-H.jpg" class="card-img-top" alt="...">
+
+            <div class="col-12 col-md-6 col-lg-4">
+              <div class="card plans-card">
+                <img class="img-card" src="https://pbs.twimg.com/media/FjSMa9oXkAI13-H.jpg" class="card-img-top" alt="...">
               <div class="card-body">
                 <h2 class="card-title">
                   <strong>Standard Artist</strong>
@@ -196,11 +198,14 @@
               </ul>
               <div class="card-body">
                 <button type="button" class="btn btn-success btn-lg">Start Now</button>
-                <button type="button" class="btn btn-secondary btn-lg">Login</button>
+                <button type="button" class="btn btn-secondary btn-lg">Acquista di nuovo</button>
               </div>
             </div>
 
-            <div class="col card m-5 plans-card" style="width: 18rem;">
+              </div>
+
+              
+            <div class="col-12 col-md-6 col-lg-4  card plans-card">
               <img class="img-card" src="https://pbs.twimg.com/media/FmZf1SWagAAiGNg.jpg" class="card-img-top" alt="...">
               <div class="card-body">
                 <h2 class="card-title">
@@ -219,7 +224,7 @@
               </div>
             </div>
 
-            <div class="col card m-5 plans-card" style="width: 18rem;">
+            <div class="col-12 col-md-6 col-lg-4 card plans-card">
               <img class="img-card" src="https://pbs.twimg.com/media/FjU2lkcWYAgNG6d.jpg" class="card-img-top" alt="...">
               <div class="card-body">
                 <h2 class="card-title">
