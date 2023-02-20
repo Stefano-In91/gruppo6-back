@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\Api\ArtistController;
 use Illuminate\Support\Facades\Route;
 
 /*
