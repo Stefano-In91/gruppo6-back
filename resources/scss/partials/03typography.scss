@@ -1,3 +1,23 @@
 /*-------------------
     TYPOGRAPHY
 -------------------*/
+h1,
+h2,
+h4 {
+    color: #f15524;
+}
+h3 {
+    columns: #34d110;
+}
+h6 {
+    color: white;
+}
+
+p {
+    color: black;
+}
+
+body {
+    font-family: "Fira Sans", sans-serif;
+    font-family: "Titillium Web", sans-serif;
+}

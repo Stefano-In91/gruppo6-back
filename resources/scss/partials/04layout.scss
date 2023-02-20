@@ -1,3 +1,93 @@
 /*-------------------
     LAYOUT
 -------------------*/
+
+.logo-header {
+    height: 100vh;
+}
+
+.logo-header img {
+    cursor: pointer;
+    transition: all 1s;
+    scale: 0.7;
+}
+
+.logo-header img:hover {
+    -webkit-animation: rotate-center 0.6s ease-in-out both;
+    animation: rotate-center 0.8s ease-in-out both;
+    scale: 0.4;
+}
+
+.logo-header {
+}
+
+.side-bar-header-right {
+    color: #f15524;
+}
+
+.login-bottom img {
+    max-width: 100%;
+    background: url("https://static01.nyt.com/images/2022/09/01/business/00roose-1/merlin_212276709_3104aef5-3dc4-4288-bb44-9e5624db0b37-superJumbo.jpg?quality=75&auto=webp");
+}
+
+.boost {
+    height: 100vh;
+    background-image: url("https://w.wallha.com/ws/14/5ZdkWEoa.jpg");
+    background-size: cover;
+    border-bottom: 20px solid white;
+}
+
+.boost img {
+    height: 100%;
+
+    background-position: 0%;
+}
+.discount {
+    height: 100vh;
+    background-image: url("https://miro.medium.com/v2/resize:fit:1400/format:webp/1*k1x6oDDEtXdQeKTAKQsSbQ.jpeg");
+    background-size: cover;
+    border-bottom: 20px solid white;
+}
+
+.music {
+    height: 100vh;
+    background-image: url("https://techcrunch.com/wp-content/uploads/2022/10/DALL%C2%B7E-2022-10-07-00.01.33-a-robot-composing-music-musical-notes-synthesizer-saturated-colors-shadows-trending-on-artstation-abstract-1-e1665150702829.png?w=1390&crop=1");
+    background-size: cover;
+}
+
+.a-link-primary {
+    color: black;
+    cursor: pointer;
+}
+
+.a-link-primary:hover {
+    color: #f15524;
+}
+.plans-card {
+    cursor: pointer;
+}
+
+.plans-card:hover {
+    // background-color: #34d110;
+}
+.plans-card img {
+    padding: 20px;
+    width: 100%;
+    border-radius: 50%;
+    transition: all 3s;
+}
+
+.plans-card img:hover {
+    -webkit-animation: rotate-center 0.6s ease-in-out both;
+    animation: rotate-center 0.8s ease-in-out both;
+    scale: 0.4;
+}
+.student-card {
+    transition: all 4s;
+}
+.img-card:hover {
+    background-color: #f15524;
+}
+.ftr {
+    background-color: #6600cc;
+}

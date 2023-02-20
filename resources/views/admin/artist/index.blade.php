@@ -11,7 +11,7 @@
 @endif
 	{{-- top bar & titolo --}}
 	<div class="top-bar">
-		<h1>Dettagli Artista</h1>
+		<h1>Dettagli Artista H1</h1>
 		<a href="{{ route('admin.artist.edit', $artist) }}" class="btn btn-warning">
 			<i class="fa-solid fa-pen-to-square"></i>
 		</a>
@@ -21,12 +21,12 @@
 	</div>
 	{{-- /top bar & titolo --}}
 	{{-- card dettagli --}}
-	<div class="details">
+	<div class="details bg-dark">
 		<div class="artist | p-3 rounded-3 col-12 col-xxl-6">
 			{{-- foto profilo --}}
 			<div class="artist__avatar">
 				@if ($artist->profile_photo)
-				<img src="{{asset("storage/$artist->profile_photo")}}" alt="{{$artist->artist_nickname}}" >
+				<img src="https://pbs.twimg.com/media/FgaxN41WQAcjM99.jpg" alt="{{$artist->artist_nickname}}" >
 				@else
 				<img src="https://via.placeholder.com/100" alt="placeholder" >
 				@endif
@@ -34,9 +34,9 @@
 			{{-- /foto profilo --}}
 	
 			<div class="artist__info">
-				<h3>{{$artist->artist_nickname}}</h3>
+				<h3 class="text-light">{{$artist->artist_nickname}}</h3>
 				{{-- descrizione intro artista --}}
-				<div id="introduction_text" >{{$artist->introduction_text}}</div>				
+				<div class="text-light" id="introduction_text" >{{$artist->introduction_text}}</div>				
 				<script>	
 						const text = document.getElementById('introduction_text');
 						const textLength = 100; //quando supera 100 caratteri si verifica la condizione e SCATTA la feature
@@ -68,21 +68,21 @@
 				{{-- /descrizione intro artista --}}
 				<div class="artist__contacts">
 					<ul>
-						<li>
-							<i class="fa-solid fa-location-dot"></i> {{$artist->address}}
+						<li class="text-light">
+							<i class="fa-solid fa-location-dot text-light"></i> {{$artist->address}}
 						</li>
-						<li>
-							<i class="fa-solid fa-phone"></i> {{$artist->phone_number}}
+						<li class="text-light">
+							<i class="fa-solid fa-phone text-light"></i> {{$artist->phone_number}}
 						</li>
 					</ul>
 				</div>
 				
 				<div class="artist__review ">
 					{{-- stelline  --}}
-					<div class="artist__review__stars">
-						Valutazione:
+					<div class="artist__review__stars text-light">
+						Review:
 						@for ($i = 0; $i < $average_review; $i++)
-						<i class="fa-solid fa-star"></i>
+						<i class="fa-solid fa-star text-light"></i>
 						@endfor
 						@for ($i = 0; $i < 5 - $average_review; $i++)
 						<i class="fa-regular fa-star"></i>
@@ -121,4 +121,7 @@
 	 </div>
   </div>
 	{{-- /modal --}}
+
+
+	
 @endsection

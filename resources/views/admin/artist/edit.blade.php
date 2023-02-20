@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-  <h1>Modifica profilo Artista</h1>
+  <h1>Modifica profilo Artista H1</h1>
   @if ($errors->any())
     <div class="alert alert-danger">
       <ul>
@@ -33,20 +33,27 @@
     </div>
 
     <div class="mb-3">
-      <label for="address" class="form-label">Indirizzo</label>
+      <label for="address" class="form-label">City</label>
       <input type="text" class="form-control @error('address') alert alert-danger @enderror"
         value="{{ $artist->address }}" id="address" name="address" maxlength="30" required>
     </div>
 
     <div class="mb-3">
-      <label for="phone_number" class="form-label">Nome d'Arte</label>
+      <label for="phone_number" class="form-label">Phone Number</label>
       <input type="text" class="form-control @error('phone_number') alert alert-danger @enderror"
         value="{{ $artist->phone_number }}" id="phone_number" name="phone_number" maxlength="30"
         required>
     </div>
 
     <div class="mb-3">
-      <label for="profile_photo" class="form-label">Immagine di Profilo</label>
+      <label for="" class="form-label">E-mail Address</label>
+      <input type="text" class="form-control @error('phone_number') alert alert-danger @enderror"
+        value="{{ $artist->phone_number }}" id="phone_number" name="phone_number" maxlength="30"
+        required>
+    </div>
+
+    <div class="mb-3">
+      <label for="profile_photo" class="form-label">Profile Pic</label>
       @if (isset($artist->profile_photo))
         <img src="{{ asset("storage/$artist->profile_photo") }}" alt="">
       @endif

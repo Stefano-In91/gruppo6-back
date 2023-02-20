@@ -7,6 +7,7 @@
     @endif
     
     <h1>Benvenuto {{ $user->name }} {{ $user->surname }}</h1>
+    
     <p>qui fai vedere le statistiche?</p>
 
   </div>
