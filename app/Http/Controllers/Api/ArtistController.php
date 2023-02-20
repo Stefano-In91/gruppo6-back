@@ -10,15 +10,15 @@ class ArtistController extends Controller
 {
     public function index() 
     {
-        $artists = Artist::with('techniques')->get();
+        $artists = Artist::all();
         
-        return $artists;
+        return "$artists";
     }
 
     public function show($slug)
     {
         try {
-            $artist = Artist::where('slug', $slug)->with('techniques')->firstOrFail();
+            $artist = Artist::where('slug', $slug)->firstOrFail();
             return $artist;
         } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
             return response([
