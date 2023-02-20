@@ -12,7 +12,7 @@
     </div>
   @endif
 
-  <form action="{{ route('admin.artist.update', $artist) }}" method="POST"
+  <form action="{{ route('admin.artists.update', $artist) }}" method="POST"
     enctype="multipart/form-data">
 
     @csrf
