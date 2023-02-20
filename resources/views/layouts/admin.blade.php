@@ -65,10 +65,10 @@
               </li>
 
               <li class="nav-item">
-                <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.artist.index' ? 'bg-secondary' : '' }}"
-                  href="{{ route('admin.artist.index') }}">
+                <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.artists.create' ? 'bg-secondary' : '' }}"
+                  href="{{ route('admin.artists.create') }}">
                   <i class="fa-solid fa-list fa-lg fa-fw"></i>
-                  Artista
+                  Profilo Artista
                 </a>
               </li>
 
@@ -76,7 +76,15 @@
                 <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.techniques.index' ? 'bg-secondary' : '' }}"
                   href="{{ route('admin.techniques.index') }}">
                   <i class="fa-solid fa-list fa-lg fa-fw"></i>
-                  Tecniche
+                  Lista Tecniche
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.artists.index' ? 'bg-secondary' : '' }}"
+                  href="{{ route('admin.artists.index') }}">
+                  <i class="fa-solid fa-list fa-lg fa-fw"></i>
+                  Lista Artisti
                 </a>
               </li>
 

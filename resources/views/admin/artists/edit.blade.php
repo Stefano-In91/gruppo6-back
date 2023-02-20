@@ -12,7 +12,7 @@
     </div>
   @endif
 
-  <form action="{{ route('admin.artist.update', $artist) }}" method="POST"
+  <form action="{{ route('admin.artists.update', $artist) }}" method="POST"
     enctype="multipart/form-data">
 
     @csrf
@@ -39,7 +39,7 @@
     </div>
 
     <div class="mb-3">
-      <label for="phone_number" class="form-label">Nome d'Arte</label>
+      <label for="phone_number" class="form-label">Numero di Telefono</label>
       <input type="text" class="form-control @error('phone_number') alert alert-danger @enderror"
         value="{{ $artist->phone_number }}" id="phone_number" name="phone_number" maxlength="30"
         required>

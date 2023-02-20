@@ -28,7 +28,7 @@ Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () 
         return view('admin.dashboard', compact('user'));
     })->name('dashboard');
 
-    Route::resource('artist', ArtistController::class)->parameters(['artist' => 'artist:slug']);
+    Route::resource('artists', ArtistController::class)->parameters(['artists' => 'artist:slug']);
     Route::resource('techniques', TechniqueController::class)->parameters(['techniques' => 'technique:slug']);
 
 });

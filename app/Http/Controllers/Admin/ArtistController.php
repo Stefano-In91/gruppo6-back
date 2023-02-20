@@ -20,16 +20,9 @@ class ArtistController extends Controller
      */
     public function index()
     {
-        // Cerca se la pagina artist linkata all'user id è stata creata e nel caso manda a index
-        if( Artist::firstWhere('user_id', Auth::id()) ) {
-            $artist = Artist::firstWhere('user_id', Auth::id());
+        $artists = Artist::all();
 
-            return view('admin.artist.index', compact('artist'));
-        } else { 
-        // Se non è ancora stata creata pagina Artista collegata a User reindirizza a create
-            $techniques = Technique::all();
-            return view('admin.artist.create', compact('techniques'));
-        }
+        return view('admin.artists.index', compact('artists'));
     }
 
     /**
@@ -39,9 +32,16 @@ class ArtistController extends Controller
      */
     public function create()
     {
-        $techniques = Technique::all();
+        // Cerca se la pagina artist linkata all'user id è stata creata e nel caso manda a show
+        if( Artist::firstWhere('user_id', Auth::id()) ) {
+            $artist = Artist::firstWhere('user_id', Auth::id());
 
-        return view('admin.artist.create', compact('techniques'));
+            return view('admin.artists.show', compact('artist'));
+        } else { 
+        // Se non è ancora stata creata pagina Artista collegata a User reindirizza a create
+            $techniques = Technique::all();
+            return view('admin.artists.create', compact('techniques'));
+        }
     }
 
     /**
@@ -70,20 +70,18 @@ class ArtistController extends Controller
         $techniques = isset($data['techniques']) ? $data['techniques'] : [];
         $new_artist->techniques()->sync($techniques);
 
-        return redirect()->route('admin.artist.index')->with('message', "Benvenuto $new_artist->name.");
+        return redirect()->route('admin.artists.index')->with('message', "Benvenuto $new_artist->name.");
     }
-
     
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Artist  $artist
      * @return \Illuminate\Http\Response
      */
     public function show(Artist $artist)
     {
-
-        return view('admin.artist.show', compact('artist'));
+        return view('admin.artists.show', compact('artist'));
     }
 
     /**
@@ -96,7 +94,7 @@ class ArtistController extends Controller
     {
         $techniques = Technique::all();
 
-        return view('admin.artist.edit', compact('artist', 'techniques'));
+        return view('admin.artists.edit', compact('artist', 'techniques'));
     }
 
     /**
@@ -123,7 +121,7 @@ class ArtistController extends Controller
         $techniques = isset($data['techniques']) ? $data['techniques'] : [];
         $artist->techniques()->sync($techniques);
 
-        return redirect()->route('admin.artist.index')->with('message', 'Artista aggiornato correttamente.');
+        return redirect()->route('admin.artists.index')->with('message', 'Artista aggiornato correttamente.');
     }
 
     /**
