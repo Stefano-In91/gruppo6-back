@@ -17,5 +17,21 @@ class Artist extends Model
         return $this->belongsToMany(Technique::class);
     }
 
+    public function messages() {
+        return $this->hasMany(Message::class);
+    }
+
+    public function reviews() {
+        return $this->hasMany(Review::class);
+    }
+
+    public function sponsors() {
+        return $this->belongsToMany(Sponsor::class);
+    }
+
+    public function ratings() {
+        return $this->belongsToMany(Rating::class);
+    }
+
     protected $guarded = ['slug', 'user_id', 'profile_photo'];
 }
