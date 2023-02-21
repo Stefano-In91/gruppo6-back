@@ -17,8 +17,9 @@ return new class extends Migration
             $table->id();
 
             $table->string('name', 30)->unique();
-            $table->string('price');
+            $table->float('price', 5, 2);
             $table->string('duration');
+            $table->string('slug');
 
             $table->timestamps();
         });
