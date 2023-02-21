@@ -10,20 +10,8 @@ class ArtistController extends Controller
 {
     public function index()
     {
-        $artists = Artist::all();
+        $artists = Artist::with('user', 'techniques')->get();
 
         return "$artists";
-    }
-
-    public function show($slug)
-    {
-        try {
-            $artist = Artist::where('slug', $slug)->with('user')->firstOrFail();
-            return $artist;
-        } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
-            return response([
-                'error' => '404 Project not found'
-            ], 404);
-        }
     }
 }
