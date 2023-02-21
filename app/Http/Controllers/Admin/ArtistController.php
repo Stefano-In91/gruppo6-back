@@ -70,7 +70,7 @@ class ArtistController extends Controller
         $techniques = isset($data['techniques']) ? $data['techniques'] : [];
         $new_artist->techniques()->sync($techniques);
 
-        return redirect()->route('admin.artists.index')->with('message', "Benvenuto $new_artist->name.");
+        return redirect()->route('admin.artists.create')->with('message', "Benvenuto $new_artist->name.");
     }
     
     /**
