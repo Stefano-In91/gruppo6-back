@@ -8,17 +8,17 @@ use App\Models\Artist;
 
 class ArtistController extends Controller
 {
-    public function index() 
+    public function index()
     {
         $artists = Artist::all();
-        
+
         return "$artists";
     }
 
     public function show($slug)
     {
         try {
-            $artist = Artist::where('slug', $slug)->firstOrFail();
+            $artist = Artist::where('slug', $slug)->with('user')->firstOrFail();
             return $artist;
         } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
             return response([
