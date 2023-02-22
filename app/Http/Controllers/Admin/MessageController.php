@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Str;
 use App\Models\Message;
 use App\Http\Requests\StoreMessageRequest;
 use App\Http\Requests\UpdateMessageRequest;
@@ -16,7 +17,9 @@ class MessageController extends Controller
      */
     public function index()
     {
-        //
+        $messages = Message::all();
+
+        return view('admin.messages.index', compact('messages'));
     }
 
     /**
@@ -26,7 +29,7 @@ class MessageController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.messages.create');
     }
 
     /**
@@ -37,7 +40,14 @@ class MessageController extends Controller
      */
     public function store(StoreMessageRequest $request)
     {
-        //
+        $data = $request->validated();
+
+        $new_message = new Message();
+        $new_message->fill($data);
+        $new_message->slug = Str::slug($new_message->title);
+        $new_message->save();
+
+        return redirect()->route('admin.messages.index')->with('message', "$new_message->title aggiunto con successo.");
     }
 
     /**
@@ -48,7 +58,7 @@ class MessageController extends Controller
      */
     public function show(Message $message)
     {
-        //
+        return view('admin.messages.show', compact('message'));
     }
 
     /**
@@ -59,7 +69,7 @@ class MessageController extends Controller
      */
     public function edit(Message $message)
     {
-        //
+        return view('admin.messages.edit', compact('message'));
     }
 
     /**
@@ -71,7 +81,14 @@ class MessageController extends Controller
      */
     public function update(UpdateMessageRequest $request, Message $message)
     {
-        //
+        $old_title = $message->title;
+
+        $data = $request->validated();
+
+        $message->slug = Str::slug($data['title']);
+        $message->update($data);
+
+        return redirect()->route('admin.messages.index')->with('message', "Il Messaggio $old_title è stato aggiornato.");
     }
 
     /**
@@ -82,6 +99,10 @@ class MessageController extends Controller
      */
     public function destroy(Message $message)
     {
-        //
+        $old_title = $message->title;
+
+        $message->delete();
+
+        return redirect()->route('admin.messages.index')->with('message', "Il Messaggio $old_title è stato cancellato." );
     }
 }
