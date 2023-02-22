@@ -36,7 +36,7 @@
     <div class="mb-3">
       <label for="address" class="form-label">Indirizzo</label>
       <input type="text" class="form-control @error('address') alert alert-danger @enderror"
-        value="{{ $artist->address }}" id="address" name="address" maxlength="30" required>
+        value="{{ $artist->address }}" id="address" name="address" maxlength="200" required>
     </div>
 
     <div class="mb-3">
