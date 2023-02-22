@@ -17,9 +17,10 @@ return new class extends Migration
             $table->id();
             $table->foreignId('artist_id')->constrained()->onDelete('cascade');
 
-            $table->string('title', 30);
+            $table->string('title', 50);
             $table->text('message_text', 1000);
-            $table->string('sender_email', 30);
+            $table->string('sender_email', 50);
+            $table->date('date', 50);
             $table->string('slug');
 
             $table->timestamps();

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('artist_id')->constrained()->onDelete('cascade');
 
-            $table->string('title', 30);
+            $table->string('title', 100);
             $table->text('review_text', 1000);
             $table->date('date', 30);
             $table->string('slug');

@@ -23,6 +23,10 @@ class DatabaseSeeder extends Seeder
         $this->call([
             UserSeeder::class,
             ArtistSeeder::class,
+            MessageSeeder::class,
+            RatingSeeder::class,
+            ReviewSeeder::class,
+            SponsorSeeder::class,
             TechniqueSeeder::class,
         ]);
                 
