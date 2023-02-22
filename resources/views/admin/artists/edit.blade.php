@@ -29,7 +29,8 @@
     <div class="mb-3">
       <label for="introduction_text" class="form-label">Introduzione</label>
       <textarea name="introduction_text" id="introduction_text" cols="30" rows="10"
-        class="form-control @error('introduction_text') alert alert-danger @enderror" required>{{ $artist->introduction_text }}</textarea>
+        class="form-control @error('introduction_text') alert alert-danger @enderror" maxlength="1000"
+        required>{{ $artist->introduction_text }}</textarea>
     </div>
 
     <div class="mb-3">

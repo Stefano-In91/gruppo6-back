@@ -16,11 +16,7 @@ class UpdateArtistRequest extends FormRequest
      */
     public function authorize()
     {
-        if( Artist::firstWhere('user_id', Auth::id()) ){
-            return true;
-        } else {
-            return false;
-        }
+        return true;
     }
 
     /**

@@ -1,7 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Str;
 use App\Models\Sponsor;
 use App\Http\Requests\StoreSponsorRequest;
 use App\Http\Requests\UpdateSponsorRequest;
@@ -15,7 +17,9 @@ class SponsorController extends Controller
      */
     public function index()
     {
-        //
+        $sponsors = Sponsor::all();
+
+        return view('admin.sponsors.index', compact('sponsors'));
     }
 
     /**
@@ -25,7 +29,7 @@ class SponsorController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.sponsors.create');
     }
 
     /**
@@ -36,7 +40,14 @@ class SponsorController extends Controller
      */
     public function store(StoreSponsorRequest $request)
     {
-        //
+        $data = $request->validated();
+
+        $new_sponsor = new Sponsor();
+        $new_sponsor->fill($data);
+        $new_sponsor->slug = Str::slug($new_sponsor->name);
+        $new_sponsor->save();
+
+        return redirect()->route('admin.sponsors.index')->with('message', "$new_sponsor->name aggiunta con successo.");
     }
 
     /**
@@ -47,7 +58,7 @@ class SponsorController extends Controller
      */
     public function show(Sponsor $sponsor)
     {
-        //
+        return view('admin.sponsors.show', compact('sponsor'));
     }
 
     /**
@@ -58,7 +69,8 @@ class SponsorController extends Controller
      */
     public function edit(Sponsor $sponsor)
     {
-        //
+        return view('admin.sponsors.edit', compact('sponsor'));
+
     }
 
     /**
@@ -70,7 +82,14 @@ class SponsorController extends Controller
      */
     public function update(UpdateSponsorRequest $request, Sponsor $sponsor)
     {
-        //
+        $old_name = $sponsor->name;
+
+        $data = $request->validated();
+
+        $sponsor->slug = Str::slug($data['name']);
+        $sponsor->update($data);
+
+        return redirect()->route('admin.sponsors.index')->with('message', "La Tecnica $old_name è stata aggiornata.");
     }
 
     /**
@@ -81,6 +100,10 @@ class SponsorController extends Controller
      */
     public function destroy(Sponsor $sponsor)
     {
-        //
+        $old_name = $sponsor->name;
+
+        $sponsor->delete();
+
+        return redirect()->route('admin.sponsors.index')->with('message', "La tecnica $old_name è stata cancellata." );
     }
 }
