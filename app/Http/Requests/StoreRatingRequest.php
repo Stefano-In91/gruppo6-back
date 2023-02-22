@@ -25,7 +25,6 @@ class StoreRatingRequest extends FormRequest
     {
         return [
             'rating' => 'required',
-            'date' => 'required|date',
         ];
     }
 }

@@ -19,6 +19,8 @@ return new class extends Migration
             $table->foreignId('artist_id')->constrained()->onDelete('cascade');
             $table->foreignId('rating_id')->constrained()->onDelete('cascade');
 
+            $table->date('rating_date');
+
             $table->timestamps();
         });
     }
