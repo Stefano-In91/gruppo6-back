@@ -92,9 +92,13 @@ class ArtistController extends Controller
      */
     public function edit(Artist $artist)
     {
-        $techniques = Technique::all();
-
-        return view('admin.artists.edit', compact('artist', 'techniques'));
+        if( $artist->user_id === Auth::id() ) {
+            $techniques = Technique::all();
+    
+            return view('admin.artists.edit', compact('artist', 'techniques'));
+        } else {
+            return "HEEELL NAW";
+        }
     }
 
     /**
@@ -106,22 +110,26 @@ class ArtistController extends Controller
      */
     public function update(UpdateArtistRequest $request, Artist $artist)
     {
-        $data = $request->validated();
+        if( $artist->user_id === Auth::id() ) {
+            $data = $request->validated();
 
-        if( isset($data['profile_photo']) ) {            
-            $img_path = Storage::disk('public')->put('uploads', $data['profile_photo']);
-            $artist->profile_photo = $img_path;
+            if( isset($data['profile_photo']) ) {            
+                $img_path = Storage::disk('public')->put('uploads', $data['profile_photo']);
+                $artist->profile_photo = $img_path;
+            }
+
+            $artist->update($data);
+            $artist->slug = Str::slug($artist->artist_nickname);
+
+            $artist->save();
+
+            $techniques = isset($data['techniques']) ? $data['techniques'] : [];
+            $artist->techniques()->sync($techniques);
+
+            return redirect()->route('admin.artists.index')->with('message', 'Artista aggiornato correttamente.');
+        } else {
+            return "HEEELL NAWNAW";
         }
-
-        $artist->update($data);
-        $artist->slug = Str::slug($artist->artist_nickname);
-
-        $artist->save();
-
-        $techniques = isset($data['techniques']) ? $data['techniques'] : [];
-        $artist->techniques()->sync($techniques);
-
-        return redirect()->route('admin.artists.index')->with('message', 'Artista aggiornato correttamente.');
     }
 
     /**
