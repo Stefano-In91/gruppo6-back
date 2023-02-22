@@ -13,7 +13,7 @@ class StoreReviewRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,10 @@ class StoreReviewRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'artist_id' => 'required|exists:artists,id',
+            'title' => 'required|max:30',
+            'review_text' => 'required|max:1000',
+            'date' => 'required|date',
         ];
     }
 }

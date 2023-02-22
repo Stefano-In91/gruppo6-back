@@ -24,7 +24,8 @@ class StoreRatingRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'rating' => 'required',
+            'date' => 'required|date',
         ];
     }
 }

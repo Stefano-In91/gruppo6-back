@@ -24,7 +24,10 @@ class UpdateMessageRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'artist_id' => 'required|exists:artists,id',
+            'title' => 'required|max:30',
+            'message_text' => 'required|max:1000',
+            'sender_email' => 'required|max:30',
         ];
     }
 }

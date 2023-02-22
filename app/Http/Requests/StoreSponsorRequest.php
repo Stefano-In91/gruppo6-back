@@ -24,7 +24,9 @@ class StoreSponsorRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => 'required|max:30',
+            'price' => 'required',
+            'duration' => 'required',
         ];
     }
 }
