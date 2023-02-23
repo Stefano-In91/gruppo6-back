@@ -11,7 +11,7 @@
       </ul>
     </div>
   @endif
-  <form action="{{ route('admin.artists.store') }}" method="POST" enctype="multipart/form-data">
+  <form id="create-artist" action="{{ route('admin.artists.store') }}" method="POST" enctype="multipart/form-data">
 
     @csrf
 
@@ -37,7 +37,7 @@
     <div class="mb-3">
       <label for="phone_number" class="form-label">Numero di Telefono</label>
       <input type="text" class="form-control @error('phone_number') alert alert-danger @enderror"
-        id="phone_number" name="phone_number" maxlength="20" required>
+        id="phone_number" name="phone_number" maxlength="20" pattern="[0-9\s]+$" required>
     </div>
 
     <div class="mb-3">
@@ -47,6 +47,7 @@
     </div>
 
     <div class="mb-3">
+      <h4>Tecniche:</h4>
       @foreach ($techniques as $technique)
         <div class="form-check form-check-inline">
           <input class="form-check-input" type="checkbox" id="{{ $technique->slug }}}"
@@ -55,7 +56,25 @@
         </div>
       @endforeach
     </div>
+    <script>
+      const form = document.querySelector('#create-artist');
+      form.addEventListener('submit', function(event) {
+        const checkboxes = document.querySelectorAll('input[name="techniques[]"]');
+          let isOneChecked = false;
 
+          for (let i = 0; i < checkboxes.length; i++) {
+            if (checkboxes[i].checked) {
+              isOneChecked = true;
+              break;
+            }
+          }
+          console.log(isOneChecked)
+          if (!isOneChecked) {
+            event.preventDefault();
+            alert('Selezionare almeno una tecnica.');
+          }
+        });
+    </script>
     <button type="submit" class="btn btn-primary">Salva</button>
     <button type="reset" class="btn btn-secondary">Reset</button>
   </form>
