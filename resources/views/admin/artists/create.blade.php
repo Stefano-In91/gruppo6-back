@@ -2,6 +2,9 @@
 
 @section('content')
   <h1>Inizializzazione Artista</h1>
+  @if (session('message'))
+    <div class="alert alert-success">{{ session('message') }}</div>
+  @endif
   @if ($errors->any())
     <div class="alert alert-danger">
       <ul>

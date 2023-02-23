@@ -72,21 +72,21 @@
                 </a>
               </li>
 
-              <li class="nav-item">
+              {{-- <li class="nav-item"> //Tecnique - Index
                 <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.techniques.index' ? 'bg-secondary' : '' }}"
                   href="{{ route('admin.techniques.index') }}">
                   <i class="fa-solid fa-list fa-lg fa-fw"></i>
                   Lista Tecniche
                 </a>
-              </li>
+              </li> --}}
 
-              <li class="nav-item">
+              {{-- <li class="nav-item"> //Artists - Index
                 <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.artists.index' ? 'bg-secondary' : '' }}"
                   href="{{ route('admin.artists.index') }}">
                   <i class="fa-solid fa-list fa-lg fa-fw"></i>
                   Lista Artisti
                 </a>
-              </li>
+              </li> --}}
 
             </ul>
           </div>
