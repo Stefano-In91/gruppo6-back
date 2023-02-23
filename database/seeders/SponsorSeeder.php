@@ -22,7 +22,7 @@ class SponsorSeeder extends Seeder
         Schema::enableForeignKeyConstraints();
         $sponsors = ['1 Settimana', '1 Mese', '1 Anno'];
         $prices = ['9.99', '29.99', '199.99'];
-        $durations = ['1 Week', '1 Month', '1 Year'];
+        $durations = ['week', 'month', 'year'];
         for ($i=0; $i < 3; $i++) { 
             $new_sponsor = new Sponsor();
             $new_sponsor->name = $sponsors[$i];

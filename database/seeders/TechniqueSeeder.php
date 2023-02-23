@@ -23,7 +23,7 @@ class TechniqueSeeder extends Seeder
         Technique::truncate();
         Schema::enableForeignKeyConstraints();
 
-        $techniques = ['Music', 'Painting', 'Acting', 'Sculpture'];
+        $techniques = ['Musicista', 'Pittore', 'Attore', 'Scultore', 'Fotografo', 'Regista', 'VideoMaker'];
 
         foreach ($techniques as $technique) {
 

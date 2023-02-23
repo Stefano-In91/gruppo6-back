@@ -28,6 +28,7 @@ class DatabaseSeeder extends Seeder
             ArtistRatingSeeder::class,
             ReviewSeeder::class,
             SponsorSeeder::class,
+            ArtistSponsorSeeder::class,
             TechniqueSeeder::class,
         ]);
                 
