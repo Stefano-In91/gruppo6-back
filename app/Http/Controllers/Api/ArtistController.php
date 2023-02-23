@@ -10,8 +10,7 @@ class ArtistController extends Controller
 {
     public function index()
     {
-        $artists = Artist::with('user', 'techniques')->get();
-
-        return "$artists";
+        $artists = Artist::with('user', 'techniques', 'sponsors', 'ratings', 'reviews')->get();
+        return $artists;
     }
 }
