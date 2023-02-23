@@ -12,7 +12,7 @@
     </div>
   @endif
 
-  <form action="{{ route('admin.artists.update', $artist) }}" method="POST"
+  <form id="edit-artist" action="{{ route('admin.artists.update', $artist) }}" method="POST"
     enctype="multipart/form-data">
 
     @csrf
@@ -43,13 +43,14 @@
       <label for="phone_number" class="form-label">Numero di Telefono</label>
       <input type="text" class="form-control @error('phone_number') alert alert-danger @enderror"
         value="{{ $artist->phone_number }}" id="phone_number" name="phone_number" maxlength="30"
+        pattern="[0-9\s]+$"
         required>
     </div>
 
     <div class="mb-3">
       <label for="profile_photo" class="form-label">Immagine di Profilo</label>
       @if (isset($artist->profile_photo))
-        <img src="{{ asset("storage/$artist->profile_photo") }}" alt="">
+        <img src="{{ asset("storage/$artist->profile_photo") }}" alt="" class="img-fluid">
       @endif
       <input type="file" class="form-control @error('profile_photo') alert alert-danger @enderror"
         id="profile_photo" name="profile_photo">
@@ -72,6 +73,25 @@
             for="{{ $technique->slug }}}">{{ $technique->name }}</label>
         </div>
       @endforeach
+      <script>
+        const form = document.querySelector('#edit-artist');
+        form.addEventListener('submit', function(event) {
+          const checkboxes = document.querySelectorAll('input[name="techniques[]"]');
+            let isOneChecked = false;
+  
+            for (let i = 0; i < checkboxes.length; i++) {
+              if (checkboxes[i].checked) {
+                isOneChecked = true;
+                break;
+              }
+            }
+            if (!isOneChecked) {
+              event.preventDefault();
+              alert('Selezionare almeno una tecnica!!');
+            }
+          });
+      </script>
+
 
       <button type="submit" class="btn btn-primary">Salva</button>
       <button type="reset" class="btn btn-secondary">Reset</button>

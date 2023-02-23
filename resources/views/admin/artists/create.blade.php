@@ -68,7 +68,6 @@
               break;
             }
           }
-          console.log(isOneChecked)
           if (!isOneChecked) {
             event.preventDefault();
             alert('Selezionare almeno una tecnica.');
