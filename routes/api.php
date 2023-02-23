@@ -15,4 +15,3 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('artists', [ArtistController::class, 'index']);
-Route::get('artists/{slug}', [ArtistController::class, 'show']);
