@@ -30,10 +30,7 @@ class DatabaseSeeder extends Seeder
             SponsorSeeder::class,
             ArtistSponsorSeeder::class,
             TechniqueSeeder::class,
+            ArtistTechniqueSeeder::class,
         ]);
-                
-   
-       
-        
     }
 }

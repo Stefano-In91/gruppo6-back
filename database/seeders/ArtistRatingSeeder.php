@@ -6,6 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Faker\Generator as Faker;
+use Illuminate\Support\Facades\Schema;
 
 class ArtistRatingSeeder extends Seeder
 {
@@ -14,10 +15,15 @@ class ArtistRatingSeeder extends Seeder
      *
      * @return void
      */
+    // Localizzazione tabella
+    protected $table = "artist_rating";
     public function run(Faker $faker)
     {
         // cancella dati precedenti in tabella
-        DB::table('artist_rating')->delete();
+        Schema::disableForeignKeyConstraints();
+        DB::table('artist_rating')->truncate();
+        Schema::enableForeignKeyConstraints();
+
         // cicla sui 20 artisti 
         for ($i=0; $i < 20; $i++) {
             // aggiunge 10 rating random per artista

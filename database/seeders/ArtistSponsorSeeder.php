@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Carbon;
 use Faker\Generator as Faker;
 use App\Models\Sponsor;
+use Illuminate\Support\Facades\Schema;
 
 class ArtistSponsorSeeder extends Seeder
 {
@@ -16,10 +17,14 @@ class ArtistSponsorSeeder extends Seeder
      *
      * @return void
      */
+    // Localizzazione tabella
+    protected $table = "artist_sponsor";
     public function run(Faker $faker)
     {
         // cancella dati precedenti in tabella
-        DB::table('artist_sponsor')->delete();
+        Schema::disableForeignKeyConstraints();
+        DB::table('artist_sponsor')->truncate();
+        Schema::enableForeignKeyConstraints();
         // cicla sui 20 artisti 
         for ($i=0; $i < 20; $i++) {
             // localizza 1 sponsor random da aggiungere per artista
