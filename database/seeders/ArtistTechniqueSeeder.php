@@ -27,15 +27,26 @@ class ArtistTechniqueSeeder extends Seeder
         $techniques = Technique::all();
         // cicla sui 20 artisti 
         for ($i=0; $i < 20; $i++) {
-            // cicla sulle tecniche esistenti e le aggiunge random (33% successo)
+            $added_tech = 0;
+            $count = 0;
+            // cicla sulle tecniche esistenti e le aggiunge random (20% successo)
             foreach ($techniques as $technique) {
-                $forse_aggiungo = rand(0, 2);
-                if($forse_aggiungo > 1){
+                $forse_aggiungo = rand(1, 5);
+                if($forse_aggiungo === 1){
                     DB::table('artist_technique')->insert([
                         'artist_id' => $i + 1,
                         'technique_id' => $technique->id,
                     ]);
+                    $added_tech++;
                 }
+                $count++;
+            }
+            // se un artista non ha neanche una tecnica ne aggiunge una random
+            if ($added_tech === 0) {
+                DB::table('artist_technique')->insert([
+                    'artist_id' => $i + 1,
+                    'technique_id' => rand(1, $count),
+                ]);
             }
         }
     }
