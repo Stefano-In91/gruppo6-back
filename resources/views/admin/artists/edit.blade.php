@@ -75,7 +75,7 @@
       @endforeach
       <script>
         const form = document.querySelector('#edit-artist');
-        form.addEventListener('submit', function(event) {
+        form.addEventListener('submit', ()=>{
           const checkboxes = document.querySelectorAll('input[name="techniques[]"]');
             let isOneChecked = false;
   

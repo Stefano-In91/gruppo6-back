@@ -58,7 +58,7 @@
     </div>
     <script>
       const form = document.querySelector('#create-artist');
-      form.addEventListener('submit', function(event) {
+      form.addEventListener('submit', ()=> {
         const checkboxes = document.querySelectorAll('input[name="techniques[]"]');
           let isOneChecked = false;
 
