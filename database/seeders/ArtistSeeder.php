@@ -25,6 +25,8 @@ class ArtistSeeder extends Seeder
             $new_artist->user_id = $i + 1;
             $new_artist->artist_nickname = $faker->name(30);
             $new_artist->introduction_text = $faker->text(100);
+            $new_artist->address = $faker->address();
+            $new_artist->phone_number = $faker->phoneNumber();
             $new_artist->slug = Str::slug($new_artist->artist_nickname);
             $new_artist->save();
         }

@@ -30,7 +30,7 @@ class UpdateArtistRequest extends FormRequest
             'artist_nickname' => ['required', Rule::unique('artists')->ignore($this->artist), 'string', 'max:30'],
             'introduction_text' => 'required|string|max:1000',
             'profile_photo' => 'nullable|image|max:4096',
-            'address' => 'required|string|max:50',
+            'address' => 'required|string|max:200',
             'phone_number' => 'required|string|max:20',
             'techniques' => 'nullable|exists:techniques,id'
         ];
