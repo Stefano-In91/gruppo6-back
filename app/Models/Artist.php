@@ -26,11 +26,11 @@ class Artist extends Model
     }
 
     public function sponsors() {
-        return $this->belongsToMany(Sponsor::class);
+        return $this->belongsToMany(Sponsor::class)->withPivot('start_date', 'end_date');
     }
 
     public function ratings() {
-        return $this->belongsToMany(Rating::class);
+        return $this->belongsToMany(Rating::class)->withPivot('rating_date');
     }
 
     protected $guarded = ['slug', 'user_id', 'profile_photo'];
