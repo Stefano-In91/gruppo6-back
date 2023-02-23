@@ -29,7 +29,7 @@ class TechniqueSeeder extends Seeder
 
             $new_technique = new Technique();
             $new_technique->name = $technique;
-            $new_technique->description = $faker->text(1000);
+            $new_technique->description = $faker->text(500);
             $new_technique->slug = Str::slug($new_technique->name);
             $new_technique->save();
         }
