@@ -20,7 +20,7 @@ class RatingSeeder extends Seeder
         Rating::truncate();
         Schema::enableForeignKeyConstraints();
 
-        $ratings = [0, 1, 2, 3, 4, 5];
+        $ratings = [1, 2, 3, 4, 5];
 
         foreach ($ratings as $rating) {
 

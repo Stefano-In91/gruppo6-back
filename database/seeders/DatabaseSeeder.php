@@ -25,6 +25,7 @@ class DatabaseSeeder extends Seeder
             ArtistSeeder::class,
             MessageSeeder::class,
             RatingSeeder::class,
+            ArtistRatingSeeder::class,
             ReviewSeeder::class,
             SponsorSeeder::class,
             TechniqueSeeder::class,
