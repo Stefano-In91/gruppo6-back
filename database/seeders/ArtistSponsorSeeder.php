@@ -33,13 +33,16 @@ class ArtistSponsorSeeder extends Seeder
             $date = $faker->dateTimeBetween('-1 month', 'now');
             // data di fine (data di inizio + durata dello sponsor)
             $end_date = Carbon::parse($date)->add($sponsor->duration, 1);
-
-            DB::table('artist_sponsor')->insert([
-                'artist_id' => $i + 1,
-                'sponsor_id' => $sponsor->id,
-                'start_date' => $date,
-                'end_date' => $end_date,
-            ]);
+            // aggiunge sponsor casualmente col 60% di probabilità positiva
+            $casual = rand(1, 5);
+            if($casual < 4) {
+                DB::table('artist_sponsor')->insert([
+                    'artist_id' => $i + 1,
+                    'sponsor_id' => $sponsor->id,
+                    'start_date' => $date,
+                    'end_date' => $end_date,
+                ]);
+            }
         }
     }
 }
