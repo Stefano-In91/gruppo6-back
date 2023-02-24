@@ -66,7 +66,8 @@ class MessageController extends Controller
      */
     public function show(Message $message)
     {
-        if ( $message->artist_id ===  Artist::firstWhere('user_id', Auth::id())->id() ) {
+        $artist = Artist::firstWhere('user_id', Auth::id());
+        if ( $message->artist_id ===  $artist->id ) {
 
             return view('admin.messages.show', compact('message'));
         }   else {

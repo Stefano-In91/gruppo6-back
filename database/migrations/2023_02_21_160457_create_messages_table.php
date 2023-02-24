@@ -21,7 +21,7 @@ return new class extends Migration
             $table->text('message_text', 1000);
             $table->string('sender_email', 50);
             $table->date('date', 50);
-            $table->string('slug');
+            $table->string('slug')->unique();
 
             $table->timestamps();
         });

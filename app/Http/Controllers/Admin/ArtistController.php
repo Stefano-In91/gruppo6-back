@@ -97,7 +97,7 @@ class ArtistController extends Controller
     
             return view('admin.artists.edit', compact('artist', 'techniques'));
         } else {
-            return "HEEELL NAW";
+            return redirect()->route('admin.dashboard')->with('message', "NEIN");
         }
     }
 
