@@ -20,9 +20,13 @@ class ArtistController extends Controller
      */
     public function index()
     {
-        $artists = Artist::all();
+        $authorized = false;
+        if ($authorized) {
 
-        return view('admin.artists.index', compact('artists'));
+            $artists = Artist::all();
+    
+            return view('admin.artists.index', compact('artists'));
+        }
     }
 
     /**
@@ -126,7 +130,7 @@ class ArtistController extends Controller
             $techniques = isset($data['techniques']) ? $data['techniques'] : [];
             $artist->techniques()->sync($techniques);
 
-            return redirect()->route('admin.artists.index')->with('message', 'Artista aggiornato correttamente.');
+            return redirect()->route('admin.artists.create')->with('message', 'Artista aggiornato correttamente.');
         } else {
             return "HEEELL NAWNAW";
         }
