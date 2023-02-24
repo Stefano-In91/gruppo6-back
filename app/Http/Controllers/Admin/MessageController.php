@@ -7,6 +7,9 @@ use Illuminate\Support\Str;
 use App\Models\Message;
 use App\Http\Requests\StoreMessageRequest;
 use App\Http\Requests\UpdateMessageRequest;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Artist;
+use App\Models\Technique;
 
 class MessageController extends Controller
 {
@@ -17,9 +20,14 @@ class MessageController extends Controller
      */
     public function index()
     {
-        $messages = Message::all();
-
-        return view('admin.messages.index', compact('messages'));
+        if ( Artist::firstWhere('user_id', Auth::id()) ) {
+            $artist = Artist::firstWhere('user_id', Auth::id());
+            $messages = Message::where('artist_id', $artist->id)->get();
+    
+            return view('admin.messages.index', compact('messages'));
+        } else {
+            return redirect()->route('admin.artists.create')->with('message', "Crea il tuo profilo Artista per continuare");
+        }
     }
 
     /**
@@ -58,7 +66,12 @@ class MessageController extends Controller
      */
     public function show(Message $message)
     {
-        return view('admin.messages.show', compact('message'));
+        if ( $message->artist_id ===  Artist::firstWhere('user_id', Auth::id())->id() ) {
+
+            return view('admin.messages.show', compact('message'));
+        }   else {
+            return redirect()->route('admin.messages.index')->with('message', "Azione non permessa");
+        }
     }
 
     /**

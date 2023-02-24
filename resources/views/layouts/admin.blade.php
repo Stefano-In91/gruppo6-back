@@ -72,6 +72,14 @@
                 </a>
               </li>
 
+              <li class="nav-item">
+                <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.messages.index' ? 'bg-secondary' : '' }}"
+                  href="{{ route('admin.messages.index') }}">
+                  <i class="fa-solid fa-list fa-lg fa-fw"></i>
+                  Lista Messaggi
+                </a>
+              </li>
+
               {{-- <li class="nav-item"> //Tecnique - Index
                 <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.techniques.index' ? 'bg-secondary' : '' }}"
                   href="{{ route('admin.techniques.index') }}">
