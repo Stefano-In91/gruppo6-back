@@ -8,7 +8,7 @@
       <p>{{ $message->message_text }}</p>
       <p>{{ $message->date }}</p>
     </div>
-    <button href="{{ route('admin.messages.index') }}" class="btn btn-primary">Torna a lista
-      Messaggi</button>
+    <a href="{{ route('admin.messages.index') }}" class="btn btn-primary">Torna a lista
+      Messaggi</a>
   </div>
 @endsection
