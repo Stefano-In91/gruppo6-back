@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\ArtistController;
+use App\Http\Controllers\Api\MessageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +17,5 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('artists', [ArtistController::class, 'index']);
 Route::get('artist/{slug}', [ArtistController::class, 'show']);
+
+Route::post('send-message', [MessageController::class, 'message']);
