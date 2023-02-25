@@ -26,4 +26,18 @@ class ArtistController extends Controller
             ], 404);
         }
     }
+
+    // funzione per trovare id artista in base a slug
+    public function id($slug)
+    {
+        try {
+            $artist = Artist::where('slug', $slug)->firstOrFail();
+            $artist_id = $artist->id;
+            return $artist_id;
+        } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
+            return response([
+                'error' => '404 artist not found'
+            ], 404);
+        }
+    }
 }
