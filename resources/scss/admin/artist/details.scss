@@ -14,7 +14,7 @@
     .artist {
         display: flex;
         align-items: center;
-        border: 2px solid var(--primary-color-500);
+        border: 2px solid var(--primary-color-200);
         &__info {
             width: calc(100% - 12rem);
             padding: 1.5rem;
@@ -39,7 +39,7 @@
             a {
                 color: var(--primary-color);
                 &:hover {
-                    color: var(--primary-color-500);
+                    color: var(--primary-color-200);
                 }
             }
             @media (width > 992px) {
