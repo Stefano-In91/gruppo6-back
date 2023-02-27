@@ -28,20 +28,9 @@
     font-size: 0.9rem;
     height: 100%;
     margin-right: 5%;
-}
-.head-search{
-    width: 18%;
     flex-grow: 1;
-    input{
-        
-        border: none;
-        border-radius: 5px;
-        padding: 0px 20px;
-        &:focus{
-            outline: none;
-        }
-    }
 }
+
 .head-nav{
     font-size: 0.9rem;
     

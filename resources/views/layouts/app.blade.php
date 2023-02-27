@@ -29,19 +29,10 @@
             <div class="head-title">
                 | a place where you belong
             </div>
-            <div class="head-search" :class="(this.activeSearch==1 ? 'appear':'')">
-                <form action=""  @submit.prevent >
-                    <input type="text" placeholder="cerca.." id="search-head" >
-                </form>
-                
-            </div>
             <div class="head-nav d-none d-md-block">
                 <ul>
-                    <li><a class="nav-link" href="{{url('/') }}">{{ __('Home') }}</a></li>
+                    <li><a class="nav-link" href="http://localhost:5173/">{{ __('Home') }}</a></li>
                     <li>Esplora</li>
-                    <li>Categorie</li>
-                    <li>Artisti</li>
-                    <li>About us</li>
                     @guest
                     <li><a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a></li>
                     @if (Route::has('register'))
