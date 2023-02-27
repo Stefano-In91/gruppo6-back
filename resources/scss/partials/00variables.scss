@@ -3,12 +3,17 @@
 -------------------*/
 :root {
     // Colors
-    --primary-color-300: #daeafc;
-    --primary-color: #5298e8;
-    --primary-color-500: #00418e;
+    --primary-color-200: #00418e;
+    --primary-color-300: #143a50;
+    --primary-color: #14213d;
 
-    --secondary-color: #f7e0cc;
+    --secondary-color: #3dff4d;
 
-    --neutral-color-600: #323232;
-    --neutral-color-800: #121212;
+    --accent-color: #fca311;
+
+    --neutral-color-100: #fff;
+    --neutral-color-200: #e5e5e5;
+    --neutral-color-600: #111111;
+    --neutral-color-800: #070707;
+    --neutral-color-900: black;
 }

@@ -1,3 +1,42 @@
 /*-------------------
     LAYOUT
 -------------------*/
+
+/*-------------------
+    header
+-------------------*/
+header#ms-header {
+    background-color: var(--neutral-color-800);
+    justify-content: flex-start;
+    align-items: center;
+    color: var(--neutral-color-100);
+
+    .logo-container {
+        margin-right: 1rem;
+    }
+
+    #logo {
+        width: 8rem;
+    }
+
+    #ms-logout {
+        text-decoration: underline;
+        &:hover {
+            color: var(--accent-color);
+        }
+    }
+}
+
+/*-------------------
+    sidebar
+-------------------*/
+#ms-sidebar {
+    background-color: var(--neutral-color-600);
+    .nav-link {
+        color: inherit; //reset bs, poi lo eredita da un'altra classe bootstrap ('text-white'), (basta che funzioni, c'è poco tempo)
+    }
+}
+
+.ms-bg-secondary {
+    background-color: var(--primary-color-200);
+}
