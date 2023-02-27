@@ -32,4 +32,11 @@ header#ms-header {
 -------------------*/
 #ms-sidebar {
     background-color: var(--neutral-color-600);
+    .nav-link {
+        color: inherit; //reset bs, poi lo eredita da un'altra classe bootstrap ('text-white'), (basta che funzioni, c'è poco tempo)
+    }
+}
+
+.ms-bg-secondary {
+    background-color: var(--primary-color-200);
 }
