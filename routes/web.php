@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\ArtistController;
 use App\Http\Controllers\Admin\MessageController;
 use App\Http\Controllers\Admin\SponsorController;
+use App\Http\Controllers\Admin\ReviewController;
 use App\Http\Controllers\Admin\TechniqueController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
