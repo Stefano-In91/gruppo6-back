@@ -27,19 +27,19 @@
 <body>
   <div id="app">
     <header class="navbar navbar-dark sticky-top flex-md-nowrap shadow px-2" id="ms-header">
-      
+
       <a class="logo-container" href="/">
-        <img src="{{ asset('assets/logowhite.png') }}" alt="logo" class="img-fluid" id="logo">
+        <img src="{{ asset('assets/logowhite.png') }}" alt="logo" class="img-fluid"
+          id="logo">
       </a>
-      
 
       <span class="h4 | header-title">
         | Dashboard
       </span>
       <a class="nav-link | h3 ms-2 ms-md-auto" id="ms-logout" href="{{ route('logout') }}"
-         onclick="event.preventDefault();
+        onclick="event.preventDefault();
          document.getElementById('logout-form').submit();">
-            {{ __('Logout') }}
+        {{ __('Logout') }}
       </a>
 
       <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
@@ -74,7 +74,7 @@
                 <a class="nav-link  {{ Route::currentRouteName() == 'admin.artists.create' ? 'ms-bg-secondary' : '' }}"
                   href="{{ route('admin.artists.create') }}">
                   <i class="fa-solid fa-user fa-lg fa-fw"></i>
-                    Profilo 
+                  Profilo
                 </a>
               </li>
 
@@ -83,6 +83,22 @@
                   href="{{ route('admin.messages.index') }}">
                   <i class="fa-solid fa-envelope fa-lg fa-fw"></i>
                   Lista Messaggi
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link  {{ Route::currentRouteName() == 'admin.reviews.index' ? 'ms-bg-secondary' : '' }}"
+                  href="{{ route('admin.reviews.index') }}">
+                  <i class="fa-solid fa-envelope fa-lg fa-fw"></i>
+                  Lista Recensioni
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link  {{ Route::currentRouteName() == 'admin.sponsors.index' ? 'ms-bg-secondary' : '' }}"
+                  href="{{ route('admin.sponsors.index') }}">
+                  <i class="fa-solid fa-envelope fa-lg fa-fw"></i>
+                  Get Sponsored
                 </a>
               </li>
 
