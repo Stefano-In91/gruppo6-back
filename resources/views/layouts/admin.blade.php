@@ -74,7 +74,7 @@
                 <a class="nav-link  {{ Route::currentRouteName() == 'admin.artists.create' ? 'ms-bg-secondary' : '' }}"
                   href="{{ route('admin.artists.create') }}">
                   <i class="fa-solid fa-user fa-lg fa-fw"></i>
-                  Profilo 
+                    Profilo 
                 </a>
               </li>
 
@@ -83,22 +83,6 @@
                   href="{{ route('admin.messages.index') }}">
                   <i class="fa-solid fa-envelope fa-lg fa-fw"></i>
                   Lista Messaggi
-                </a>
-              </li>
-
-              <li class="nav-item">
-                <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.reviews.index' ? 'bg-secondary' : '' }}"
-                  href="{{ route('admin.reviews.index') }}">
-                  <i class="fa-solid fa-list fa-lg fa-fw"></i>
-                  Lista Recensioni ricevute
-                </a>
-              </li>
-
-              <li class="nav-item">
-                <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.sponsors.index' ? 'bg-secondary' : '' }}"
-                  href="{{ route('admin.sponsors.index') }}">
-                  <i class="fa-solid fa-list fa-lg fa-fw"></i>
-                  Passa a Premium !11!!!
                 </a>
               </li>
 

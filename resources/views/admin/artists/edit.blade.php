@@ -50,7 +50,7 @@
     <div class="mb-3">
       <label for="profile_photo" class="form-label">Immagine di Profilo</label>
       @if (isset($artist->profile_photo))
-        <img src="{{ asset("storage/$artist->profile_photo") }}" alt="" class="img-fluid">
+        <img src="{{ asset("storage/$artist->profile_photo") }}" alt="" class="mw-sm">
       @endif
       <input type="file" class="form-control @error('profile_photo') alert alert-danger @enderror"
         id="profile_photo" name="profile_photo">
@@ -87,7 +87,10 @@
             }
             if (!isOneChecked) {
               event.preventDefault();
-              alert('Selezionare almeno una tecnica!!');
+              const alert = document.createElement('div');
+              alert.classList.add('alert', 'alert-danger', 'mt-3');
+              alert.innerHTML = 'Selezionare almeno una tecnica!';
+              form.prepend(alert);
             }
           });
       </script>

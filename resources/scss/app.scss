@@ -24,12 +24,9 @@
 /*--------------------------------
     IMPORT admin/artist
 -----------------------------*/
-@import "./admin/artist/welcome.scss";
-@import "./admin//artist/details.scss";
-
+@import "./admin/artist.scss";
 
 /*--------------------------------
     IMPORT admin/homepage
 ---------------------------------*/
-@import "./admin/homepage/header.scss";    
-
+@import "./admin/homepage/header.scss";
