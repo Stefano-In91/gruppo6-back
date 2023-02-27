@@ -48,7 +48,7 @@
       <span class="h4 | header-title">
         | Dashboard
       </span>
-      <a class="nav-link | ms-auto" href="{{ route('logout') }}"
+      <a class="nav-link | h4 ms-2 ms-md-auto" id="ms-logout" href="{{ route('logout') }}"
          onclick="event.preventDefault();
          document.getElementById('logout-form').submit();">
             {{ __('Logout') }}
@@ -119,6 +119,7 @@
             </ul>
           </div>
         </nav>
+        {{-- /sidebar --}}
 
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
           <div class="p-3">
