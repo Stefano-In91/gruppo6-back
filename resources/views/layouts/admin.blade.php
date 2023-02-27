@@ -32,23 +32,11 @@
         <img src="{{ asset('assets/logowhite.png') }}" alt="logo" class="img-fluid" id="logo">
       </a>
       
-      {{-- <div class="navbar-nav">
-        <div class="nav-item text-nowrap ms-2">
-          <a class="nav-link" href="{{ route('logout') }}"
-            onclick="event.preventDefault();
-                    document.getElementById('logout-form').submit();">
-            {{ __('Logout') }}
-          </a>
-          <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-            @csrf
-          </form>
-        </div>
-      </div> --}}
 
       <span class="h4 | header-title">
         | Dashboard
       </span>
-      <a class="nav-link | h4 ms-2 ms-md-auto" id="ms-logout" href="{{ route('logout') }}"
+      <a class="nav-link | h3 ms-2 ms-md-auto" id="ms-logout" href="{{ route('logout') }}"
          onclick="event.preventDefault();
          document.getElementById('logout-form').submit();">
             {{ __('Logout') }}
@@ -58,47 +46,45 @@
         @csrf
       </form>
 
-      {{-- hamburger mobile --}}
+      {{-- hamburger toggler mobile --}}
       <button class="navbar-toggler d-md-none collapsed ms-auto" type="button"
-        data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu"
+        data-bs-toggle="collapse" data-bs-target="#ms-sidebar" aria-controls="ms-sidebar"
         aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      {{-- /hambugrger mobile --}}
+      {{-- /hambugrger toggler mobile --}}
     </header>
 
     <div class="container-fluid vh-100">
       <div class="row h-100">
-        <nav id="sidebarMenu"
-          class="col-md-3 col-lg-2 d-md-block bg-dark navbar-dark sidebar collapse">
+        {{-- sidebar --}}
+        <nav id="ms-sidebar" class="col-md-3 col-xl-2 d-md-block  sidebar collapse">
           <div class="position-sticky pt-3">
             <ul class="nav flex-column">
 
               <li class="nav-item">
                 <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.dashboard' ? 'bg-secondary' : '' }}"
                   href="{{ route('admin.dashboard') }}">
-                  <i class="fa-solid fa-tachometer-alt fa-lg fa-fw"></i>
-                  Dashboard
+                  <i class="fa-solid fa-chart-column fa-lg fa-fw"></i>
+                  Statistiche
                 </a>
               </li>
 
               <li class="nav-item">
                 <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.artists.create' ? 'bg-secondary' : '' }}"
                   href="{{ route('admin.artists.create') }}">
-                  <i class="fa-solid fa-list fa-lg fa-fw"></i>
-                  Profilo Artista
+                  <i class="fa-solid fa-user fa-lg fa-fw"></i>
+                  Profilo 
                 </a>
               </li>
 
               <li class="nav-item">
                 <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.messages.index' ? 'bg-secondary' : '' }}"
                   href="{{ route('admin.messages.index') }}">
-                  <i class="fa-solid fa-list fa-lg fa-fw"></i>
+                  <i class="fa-solid fa-envelope fa-lg fa-fw"></i>
                   Lista Messaggi
                 </a>
               </li>
-
-          
 
               {{-- <li class="nav-item"> //Tecnique - Index
                 <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.techniques.index' ? 'bg-secondary' : '' }}"
@@ -121,7 +107,7 @@
         </nav>
         {{-- /sidebar --}}
 
-        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+        <main class="col-md-9 ms-sm-auto col-xl-10 px-md-4">
           <div class="p-3">
             @yield('content')
           </div>

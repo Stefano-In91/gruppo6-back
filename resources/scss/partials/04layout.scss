@@ -20,9 +20,9 @@ header#ms-header {
     }
 
     #ms-logout {
+        text-decoration: underline;
         &:hover {
             color: var(--accent-color);
-            text-decoration: underline;
         }
     }
 }
@@ -30,6 +30,6 @@ header#ms-header {
 /*-------------------
     sidebar
 -------------------*/
-#sidebarMenu#ms-sidebar {
-    background-color: var(--neutral-color-900);
+#ms-sidebar {
+    background-color: var(--neutral-color-600);
 }
