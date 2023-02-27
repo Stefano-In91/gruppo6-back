@@ -80,6 +80,22 @@
                 </a>
               </li>
 
+              <li class="nav-item">
+                <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.reviews.index' ? 'bg-secondary' : '' }}"
+                  href="{{ route('admin.reviews.index') }}">
+                  <i class="fa-solid fa-list fa-lg fa-fw"></i>
+                  Lista Recensioni ricevute
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.sponsors.index' ? 'bg-secondary' : '' }}"
+                  href="{{ route('admin.sponsors.index') }}">
+                  <i class="fa-solid fa-list fa-lg fa-fw"></i>
+                  Passa a Premium !11!!!
+                </a>
+              </li>
+
               {{-- <li class="nav-item"> //Tecnique - Index
                 <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.techniques.index' ? 'bg-secondary' : '' }}"
                   href="{{ route('admin.techniques.index') }}">

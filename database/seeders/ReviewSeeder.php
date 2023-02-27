@@ -7,6 +7,7 @@ use Illuminate\Database\Seeder;
 use Faker\Generator as Faker; 
 use Illuminate\Support\Facades\Schema;
 use App\Models\Review;
+use App\Models\Artist;
 use Illuminate\Support\Str;
 
 class ReviewSeeder extends Seeder
@@ -21,10 +22,12 @@ class ReviewSeeder extends Seeder
         Schema::disableForeignKeyConstraints();
         Review::truncate();
         Schema::enableForeignKeyConstraints();
-        for ($i=0; $i < 20; $i++) { //cicla sui 20 artisti
+        
+        $artists = Artist::all();
+        foreach ($artists as $artist) { //cicla sugli artisti
             for ($r=0; $r < 5; $r++){ //5 review per artista
                 $new_review = new Review();
-                $new_review->artist_id = $i + 1;
+                $new_review->artist_id = $artist->id;
                 $new_review->title = $faker->sentence(3, false);
                 $new_review->review_text = $faker->text(300);
                 $new_review->date = $faker->date();

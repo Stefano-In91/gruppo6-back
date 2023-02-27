@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Str;
 use App\Models\Review;
+use App\Models\Artist;
 use App\Http\Requests\StoreReviewRequest;
 use App\Http\Requests\UpdateReviewRequest;
+use Illuminate\Support\Facades\Auth;
 
 class ReviewController extends Controller
 {
@@ -17,7 +19,10 @@ class ReviewController extends Controller
      */
     public function index()
     {
-        $reviews = Review::all();
+        // restituisce lista recensioni in base all'id di autenticazione linkato all'artista
+        $user_id = Auth::id();
+        $artist = Artist::firstWhere('user_id', $user_id);
+        $reviews = Review::where('artist_id', $artist->id)->get();
 
         return view('admin.reviews.index', compact('reviews'));
     }
@@ -58,7 +63,14 @@ class ReviewController extends Controller
      */
     public function show(Review $review)
     {
-        return view('admin.reviews.show', compact('review'));
+        // il controllo blocca la show a delle review appartenenti ad altri artisti se non quello loggato
+        $user_id = Auth::id();
+        $artist = Artist::firstWhere('user_id', $user_id);
+        if ($review->artist_id === $artist->id) {
+            return view('admin.reviews.show', compact('review'));
+        } else {
+            return redirect()->view('admin.reviews.index')->with('message', 'azione non autorizzata');
+        }
     }
 
     /**
