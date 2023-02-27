@@ -18,7 +18,7 @@ class ArtistController extends Controller
     {
         try {
             //davide: non ho messo rating ma mi servirà per le stelline
-            $artist = Artist::where('slug', $slug)->with('user', 'techniques')->firstOrFail();
+            $artist = Artist::where('slug', $slug)->with('user', 'techniques', 'sponsors', 'ratings', 'reviews')->firstOrFail();
             return $artist;
         } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
             return response([

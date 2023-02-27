@@ -1,16 +1,16 @@
 @extends('layouts.admin')
 
 @section('content')
-  <div class="container">
-    <div class="py-4">
+@if (session('message'))
+  <div class="alert alert-success">{{ session('message') }}</div>
+@endif
+<h1>Lista Messaggi Ricevuti</h1>
+  <div class="container-fluid">
 
-      <h1>Lista Messaggi Ricevuti</h1>
 
-      @if (session('message'))
-        <div class="alert alert-success">{{ session('message') }}</div>
-      @endif
 
-      <table class="table table-striped table-inverse table-responsive">
+
+      <table class="table table-striped table-inverse table-responsive d-none">
         <thead>
           <tr>
             <th scope="col">Mittente</th>
@@ -35,6 +35,27 @@
 
         </tbody>
       </table>
-    </div>
+
+  <div class="row">
+    @foreach ($messages as $message)
+        <div class="col-12 col-lg-6 col-xxl-3">
+           {{-- card message --}}
+            <div class="card mt-4">
+                <div class="card-header">
+                  <h4 class="card-title">{{$message->title}}</h4>
+                  <h6 class="card-subtitle mb-2 text-muted">mittente: {{$message->sender_email}}</h6>
+                  <a href="{{ route('admin.messages.show', $message) }}" class="btn btn-success">
+                    <i class="fa-solid fa-eye"></i>
+                  </a>
+                </div>
+                <div class="card-body">
+                  <p class="card-text">{{ $message->message_text }}</p> 	
+                </div>
+            </div>
+            {{-- /card message --}}
+        </div>
+    @endforeach
+  </div>    
+    
   </div>
 @endsection

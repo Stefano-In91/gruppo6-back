@@ -17,3 +17,11 @@
     --neutral-color-800: #070707;
     --neutral-color-900: black;
 }
+
+//sovrascrivo le custom properties di Bs
+.btn-primary {
+    --bs-btn-bg: var(--primary-color-200);
+    --bs-btn-border-color: var(--primary-color-200);
+    --bs-btn-hover-bg: var(--primary-color);
+    --bs-btn-hover-border-color: var(--primary-color);
+}
