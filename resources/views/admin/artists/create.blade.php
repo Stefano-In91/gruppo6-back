@@ -73,7 +73,10 @@
           }
           if (!isOneChecked) {
             event.preventDefault();
-            alert('Selezionare almeno una tecnica.');
+            const alert = document.createElement('div');
+            alert.classList.add('alert', 'alert-danger', 'mt-3');
+            alert.innerHTML = 'Selezionare almeno una tecnica!';
+            form.append(alert);
           }
         });
     </script>
