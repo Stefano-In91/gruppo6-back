@@ -20,7 +20,7 @@ class ArtistSeeder extends Seeder
         Schema::disableForeignKeyConstraints();
         Artist::truncate();
         Schema::enableForeignKeyConstraints();
-        for ($i=0; $i < 20; $i++) { 
+        for ($i=0; $i < 40; $i++) { 
             $new_artist = new Artist();
             $new_artist->user_id = $i + 1;
             $new_artist->artist_nickname = $faker->name(30);

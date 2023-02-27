@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Carbon;
 use Faker\Generator as Faker;
 use App\Models\Sponsor;
+use App\Models\Artist;
 use Illuminate\Support\Facades\Schema;
 
 class ArtistSponsorSeeder extends Seeder
@@ -25,8 +26,9 @@ class ArtistSponsorSeeder extends Seeder
         Schema::disableForeignKeyConstraints();
         DB::table('artist_sponsor')->truncate();
         Schema::enableForeignKeyConstraints();
-        // cicla sui 20 artisti 
-        for ($i=0; $i < 20; $i++) {
+        // cicla sugli artisti 
+        $artists = Artist::all();
+        foreach ($artists as $artist) {
             // localizza 1 sponsor random da aggiungere per artista
             $sponsor = Sponsor::firstWhere('id', rand(1, 3));
             // data di inizio
@@ -37,7 +39,7 @@ class ArtistSponsorSeeder extends Seeder
             $casual = rand(1, 5);
             if($casual < 4) {
                 DB::table('artist_sponsor')->insert([
-                    'artist_id' => $i + 1,
+                    'artist_id' => $artist->id,
                     'sponsor_id' => $sponsor->id,
                     'start_date' => $date,
                     'end_date' => $end_date,
