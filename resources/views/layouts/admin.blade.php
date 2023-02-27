@@ -26,19 +26,13 @@
 
 <body>
   <div id="app">
-    <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-2 shadow">
-     
-      <a class="navbar-brand col-md-3 col-lg-2 me-0  | logo-container" href="/">
-        <img src="{{ asset('assets/my-ArtistHub.png') }}" alt="logo" class="img-fluid" id="logo">
+    <header class="navbar navbar-dark sticky-top flex-md-nowrap shadow px-2" id="ms-header">
+      
+      <a class="logo-container" href="/">
+        <img src="{{ asset('assets/logowhite.png') }}" alt="logo" class="img-fluid" id="logo">
       </a>
       
-      <button class="navbar-toggler position-absolute d-md-none collapsed" type="button"
-        data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu"
-        aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      
-      <div class="navbar-nav">
+      {{-- <div class="navbar-nav">
         <div class="nav-item text-nowrap ms-2">
           <a class="nav-link" href="{{ route('logout') }}"
             onclick="event.preventDefault();
@@ -49,8 +43,28 @@
             @csrf
           </form>
         </div>
-      </div>
+      </div> --}}
 
+      <span class="h4 | header-title">
+        | Dashboard
+      </span>
+      <a class="nav-link | ms-auto" href="{{ route('logout') }}"
+         onclick="event.preventDefault();
+         document.getElementById('logout-form').submit();">
+            {{ __('Logout') }}
+      </a>
+
+      <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+        @csrf
+      </form>
+
+      {{-- hamburger mobile --}}
+      <button class="navbar-toggler d-md-none collapsed ms-auto" type="button"
+        data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      {{-- /hambugrger mobile --}}
     </header>
 
     <div class="container-fluid vh-100">
@@ -83,6 +97,8 @@
                   Lista Messaggi
                 </a>
               </li>
+
+          
 
               {{-- <li class="nav-item"> //Tecnique - Index
                 <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.techniques.index' ? 'bg-secondary' : '' }}"
