@@ -17,7 +17,6 @@ class ArtistController extends Controller
     public function show($slug)
     {
         try {
-            //davide: non ho messo rating ma mi servirà per le stelline
             $artist = Artist::where('slug', $slug)->with('user', 'techniques', 'sponsors', 'ratings', 'reviews')->firstOrFail();
             return $artist;
         } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
@@ -34,6 +33,19 @@ class ArtistController extends Controller
             $artist = Artist::where('slug', $slug)->firstOrFail();
             $artist_id = $artist->id;
             return $artist_id;
+        } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
+            return response([
+                'error' => '404 artist not found'
+            ], 404);
+        }
+    }
+
+    //funzione simile a show ma con le info basic dell'artista
+    public function basic($slug)
+    {
+        try {
+            $artist = Artist::where('slug', $slug)->with('user')->firstOrFail();
+            return $artist;
         } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
             return response([
                 'error' => '404 artist not found'

@@ -21,6 +21,7 @@ Route::get('artists', [ArtistController::class, 'index']);
 Route::get('artist/{slug}', [ArtistController::class, 'show']);
 Route::get('artist-id/{slug}', [ArtistController::class, 'id']);
 Route::get('ratings', [RatingController::class, 'index']);
+Route::get('artist/{slug}/basic', [ArtistController::class, 'basic']);
 
 Route::post('send-message', [MessageController::class, 'message']);
 Route::post('send-rating', [RatingController::class, 'rating']);
