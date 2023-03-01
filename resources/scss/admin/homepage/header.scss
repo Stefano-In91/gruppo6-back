@@ -1,6 +1,6 @@
-.head{
+.head {
     color: white;
-    position: fixed;
+    position: sticky;
     z-index: 20;
     top: 0;
     left: 0;
@@ -11,18 +11,17 @@
     background-color: rgb(0, 0, 0);
     display: flex;
     align-items: center;
-    
 }
-.head-logo{
+.head-logo {
     display: flex;
     align-items: center;
-    font-size: 2rem;            
+    font-size: 2rem;
     height: 100%;
 }
-.head-logo img{
-    width:90%;
+.head-logo img {
+    width: 90%;
 }
-.head-title{
+.head-title {
     display: flex;
     align-items: center;
     font-size: 0.9rem;
@@ -31,70 +30,67 @@
     flex-grow: 1;
 }
 
-.head-nav{
+.head-nav {
     font-size: 0.9rem;
-    
-    ul{
-       display: flex; 
-       margin-bottom: 0px;
-       justify-content: space-between;
-       li{
-        list-style: none;
-        
-        cursor: pointer;
-       }
+
+    ul {
+        display: flex;
+        margin-bottom: 0px;
+        justify-content: space-between;
+        li {
+            list-style: none;
+
+            cursor: pointer;
+        }
     }
 }
-.head-nav{
-    width:34%;
+.head-nav {
+    width: 34%;
 }
-@media screen and (max-width:1200px){
-    .head{
-        padding:0px 10px;
+@media screen and (max-width: 1200px) {
+    .head {
+        padding: 0px 10px;
     }
-    .head-nav{
+    .head-nav {
         width: 47%;
     }
-    #search-head{
-        width:100%;
+    #search-head {
+        width: 100%;
     }
 }
-@media screen and (max-width:768px){
-    .head-logo{
+@media screen and (max-width: 768px) {
+    .head-logo {
         width: 15%;
-        
     }
-    .home-search{
-            left: calc(50% - 260px);
-            
-        }
-    #search-head{
-        width:278px;
-    }    
+    .home-search {
+        left: calc(50% - 260px);
+    }
+    #search-head {
+        width: 278px;
+    }
 }
-@media screen and (max-width:576px){
-    .head-title{
+@media screen and (max-width: 576px) {
+    .head-title {
         flex-grow: 1;
     }
-    .home-search{
+    .home-search {
         width: 100%;
         left: 0;
         background-color: transparent;
-        
     }
-    #inspire{
+    #inspire {
         font-size: 2.3rem;
         color: white;
     }
-    #discover{
+    #discover {
         font-size: 1.2rem;
         margin-bottom: 15px;
         color: white;
     }
-    .reg{
+    .reg {
         padding: 10px 25px;
     }
-    .head-search{
+    .head-search {
         display: none;
     }
 }
