@@ -24,7 +24,7 @@
         <!--custom header-->
         <div class="head">
             <div class="head-logo">
-                <!--<img src="./HomePageAssets/logowhite.png" alt="">-->
+                <img src="{{asset('assets/logowhite.png')}}" alt="logo">
             </div>
             <div class="head-title">
                 | a place where you belong
@@ -65,7 +65,7 @@
     </header>
         
         
-    <main class="">
+    <main>
         @yield('content')
     </main>
 </body>

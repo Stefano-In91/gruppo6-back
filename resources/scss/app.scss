@@ -15,11 +15,9 @@
 //gli import vanno dal meno specifico al più specifico
 
 /*--------------------------------
-    IMPORT Dashboard layout
+    IMPORT access section
 -----------------------------*/
-//...
-
-//inserite il vostro import con attenzione
+@import "./access/login.scss"; // IN LOGIN, ci sono anche le basi dell'access
 
 /*--------------------------------
     IMPORT admin/artist
