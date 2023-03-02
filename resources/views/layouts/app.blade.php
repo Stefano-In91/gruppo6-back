@@ -25,7 +25,7 @@
         <!--custom header-->
         <div class="head">
             <a href="http://localhost:5174/" class="head-logo">
-                <img src="{{asset('assets/logowhite.png')}}" alt="logo">
+               <img src="{{asset('assets/logowhite.png')}}" alt="logo">
             </a>
             <div class="head-title">
                 | a place where you belong

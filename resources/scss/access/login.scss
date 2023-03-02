@@ -29,5 +29,19 @@
 }
 
 /*--------------------------------
-    LOGIN
+    welcome
 -----------------------------*/
+
+.welcome {
+    h1 {
+        font-family: "Climate Crisis", cursive;
+        font-size: 4rem;
+        @media (width < 992px) {
+            font-size: 3.8rem;
+        }
+        @media (width < 576px) {
+            font-size: 2rem;
+            word-break: break-all;
+        }
+    }
+}
