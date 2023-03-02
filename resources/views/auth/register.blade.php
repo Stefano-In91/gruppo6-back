@@ -3,10 +3,10 @@
 @section('content')
 
 
-          <h3 class="fs-1">Registrazione</h3>
 
-          <div class="container-sm">
-            <div class="form__container">
+<div class="container-sm">
+  <div class="form__container">
+              <h3 class="fs-1">Registrazione</h3>
               <form method="POST" action="{{ route('register') }}">
                 @csrf
                 <div class="container-fluid">
