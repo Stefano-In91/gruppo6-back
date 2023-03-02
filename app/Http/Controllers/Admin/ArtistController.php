@@ -49,7 +49,12 @@ class ArtistController extends Controller
                 $rating_total += $star->rating;
                 $rating_number ++;
             }
-            $average_review = round($rating_total / $rating_number);
+            // se rating è impostato passa la media, altrimenti 0
+            if($rating_number != 0) {
+                $average_review = round($rating_total / $rating_number);
+            } else {
+                $average_review = 0;
+            }
 
             return view('admin.artists.show', compact('artist', 'average_review'));
         } else { 
