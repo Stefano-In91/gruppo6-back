@@ -89,7 +89,7 @@
               <li class="nav-item">
                 <a class="nav-link  {{ Route::currentRouteName() == 'admin.reviews.index' ? 'ms-bg-secondary' : '' }}"
                   href="{{ route('admin.reviews.index') }}">
-                  <i class="fa-solid fa-envelope fa-lg fa-fw"></i>
+                  <i class="fa-solid fa-comment-dots fa-lg fa-fw"></i>
                   Lista Recensioni
                 </a>
               </li>
@@ -97,7 +97,7 @@
               <li class="nav-item">
                 <a class="nav-link  {{ Route::currentRouteName() == 'admin.sponsors.index' ? 'ms-bg-secondary' : '' }}"
                   href="{{ route('admin.sponsors.index') }}">
-                  <i class="fa-solid fa-envelope fa-lg fa-fw"></i>
+                  <i class="fa-solid fa-money-bill-trend-up fa-lg fa-fw"></i>
                   Get Sponsored
                 </a>
               </li>

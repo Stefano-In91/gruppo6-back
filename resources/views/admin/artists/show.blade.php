@@ -91,7 +91,6 @@
             @endfor
           </div>
           {{-- /stelline --}}
-          <a href="#">Vedi tutte le recensioni</a>
         </div>
       </div>
     </div>
