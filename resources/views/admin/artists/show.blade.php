@@ -1,11 +1,6 @@
 @extends('layouts.admin')
 
 @section('content')
-  <?php
-  // variabile il rating dell'artista (bisogna fare un parse INT)
-  $average_review = 4;
-  ?>
-
   @if (session('message'))
     <div class="alert alert-success">{{ session('message') }}</div>
   @endif

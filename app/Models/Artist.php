@@ -30,7 +30,7 @@ class Artist extends Model
     }
 
     public function ratings() {
-        return $this->belongsToMany(Rating::class)->withPivot('rating_date');
+        return $this->belongsToMany(Rating::class)->withPivot('rating_id', 'rating_date');
     }
 
     protected $guarded = ['slug', 'user_id', 'profile_photo'];

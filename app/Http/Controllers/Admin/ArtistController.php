@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StoreArtistRequest;
 use App\Http\Requests\UpdateArtistRequest;
 use App\Models\Technique;
+use App\Models\Rating;
 use Illuminate\Support\Facades\Storage;
 
 class ArtistController extends Controller
@@ -40,7 +41,17 @@ class ArtistController extends Controller
         if( Artist::firstWhere('user_id', Auth::id()) ) {
             $artist = Artist::firstWhere('user_id', Auth::id());
 
-            return view('admin.artists.show', compact('artist'));
+            //passaggio statistiche a blade
+            $ratings = $artist->load('ratings');
+            $rating_total = 0;
+            $rating_number = 0;
+            foreach($ratings->ratings as $star) {
+                $rating_total += $star->rating;
+                $rating_number ++;
+            }
+            $average_review = round($rating_total / $rating_number);
+
+            return view('admin.artists.show', compact('artist', 'average_review'));
         } else { 
         // Se non è ancora stata creata pagina Artista collegata a User reindirizza a create
             $techniques = Technique::all();
