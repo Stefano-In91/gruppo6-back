@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('address', 200);
             $table->string('phone_number', 20);
             $table->string('profile_photo')->nullable();
-            $table->string('seeded_pic', 1000);        
+            $table->string('seeded_pic', 1000)->nullable();        
             $table->string('slug');
 
 
