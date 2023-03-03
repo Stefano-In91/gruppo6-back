@@ -9,6 +9,7 @@ use App\Models\Message;
 use Faker\Generator as Faker; 
 use Illuminate\Support\Str;
 use App\Models\Artist;
+use Illuminate\Support\Carbon;
 
 
 class MessageSeeder extends Seeder
@@ -32,7 +33,8 @@ class MessageSeeder extends Seeder
                 $new_message->title = $faker->sentence(3, false);
                 $new_message->message_text = $faker->text(500);
                 $new_message->sender_email = $faker->email();
-                $new_message->date = $faker->date();
+                $date = $faker->dateTimeBetween('-3 months', 'now');
+                $new_message->date = Carbon::parse($date);
                 $slug_matrix = "$new_message->title $new_message->date";
                 $new_message->slug = Str::slug( $slug_matrix );
                 $new_message->save();

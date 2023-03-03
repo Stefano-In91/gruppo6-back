@@ -4,8 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Str;
-use App\Models\Review;
 use App\Models\Artist;
+use App\Models\Review;
+use App\Models\Technique;
 use App\Http\Requests\StoreReviewRequest;
 use App\Http\Requests\UpdateReviewRequest;
 use Illuminate\Support\Facades\Auth;
@@ -19,12 +20,19 @@ class ReviewController extends Controller
      */
     public function index()
     {
-        // restituisce lista recensioni in base all'id di autenticazione linkato all'artista
-        $user_id = Auth::id();
-        $artist = Artist::firstWhere('user_id', $user_id);
-        $reviews = Review::where('artist_id', $artist->id)->get();
+        if ( Artist::firstWhere('user_id', Auth::id()) ) {
+            // restituisce lista recensioni in base all'id di autenticazione linkato all'artista
+            $artist = Artist::firstWhere('user_id', Auth::id());
+            $reviews = Review::where('artist_id', $artist->id)->get();
 
-        return view('admin.reviews.index', compact('reviews'));
+            $reviews = $reviews->sortByDesc(function($review) {
+                return $review->date;
+            });
+
+            return view('admin.reviews.index', compact('reviews'));
+        } else {
+            return redirect()->route('admin.artists.create')->with('message', "Crea il tuo profilo Artista per continuare");
+        }
     }
 
     /**

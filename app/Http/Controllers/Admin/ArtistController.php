@@ -58,7 +58,7 @@ class ArtistController extends Controller
 
             return view('admin.artists.show', compact('artist', 'average_review'));
         } else { 
-        // Se non è ancora stata creata pagina Artista collegata a User reindirizza a create
+            // Se non è ancora stata creata pagina Artista collegata a User reindirizza a create
             $techniques = Technique::all();
             return view('admin.artists.create', compact('techniques'));
         }
@@ -117,7 +117,7 @@ class ArtistController extends Controller
     
             return view('admin.artists.edit', compact('artist', 'techniques'));
         } else {
-            return redirect()->route('admin.dashboard')->with('message', "NEIN");
+            return redirect()->route('admin.artists.create')->with('message', "NEIN");
         }
     }
 

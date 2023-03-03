@@ -4,8 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Rating;
+use App\Models\Artist;
 use App\Http\Requests\StoreRatingRequest;
 use App\Http\Requests\UpdateRatingRequest;
+use Illuminate\Support\Facades\Auth;
+use Termwind\Components\Dd;
 
 class RatingController extends Controller
 {
@@ -16,9 +19,17 @@ class RatingController extends Controller
      */
     public function index()
     {
-        $ratings = Rating::all();
+        if ( Artist::firstWhere('user_id', Auth::id()) ) {
+            $artist = Artist::firstWhere('user_id', Auth::id())->load('ratings');
+            $ratings = $artist->ratings;
+            $ratings = $ratings->sortByDesc(function($rating) {
+                return $rating->pivot->rating_date;
+            });
 
-        return view('admin.ratings.index', compact('ratings'));
+            return view('admin.ratings.index', compact('ratings'));
+        } else {
+            return redirect()->route('admin.artists.create')->with('message', "Crea il tuo profilo Artista per continuare");
+        }
     }
 
     /**

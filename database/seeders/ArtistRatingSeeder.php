@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Faker\Generator as Faker;
 use Illuminate\Support\Facades\Schema;
 use App\Models\Artist;
+use Illuminate\Support\Carbon;
 
 class ArtistRatingSeeder extends Seeder
 {
@@ -30,10 +31,11 @@ class ArtistRatingSeeder extends Seeder
         foreach ($artists as $artist) {
             // aggiunge 10 rating random per artista
             for ($r=0; $r < 10; $r++) { 
+                $date = $faker->dateTimeBetween('-3 months', 'now');
                 DB::table('artist_rating')->insert([
                     'artist_id' => $artist->id,
                     'rating_id' => rand(1, 5),
-                    'rating_date' => $faker->dateTimeBetween('-1 year', 'now'),
+                    'rating_date' => Carbon::parse($date),
                 ]); 
             }    
         }
