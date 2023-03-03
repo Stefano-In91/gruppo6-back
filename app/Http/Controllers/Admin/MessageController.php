@@ -23,6 +23,10 @@ class MessageController extends Controller
         if ( Artist::firstWhere('user_id', Auth::id()) ) {
             $artist = Artist::firstWhere('user_id', Auth::id());
             $messages = Message::where('artist_id', $artist->id)->get();
+
+            $messages = $messages->sortByDesc(function($message) {
+                return $message->date;
+            });
     
             return view('admin.messages.index', compact('messages'));
         } else {
