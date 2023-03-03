@@ -19,13 +19,17 @@ class RatingController extends Controller
      */
     public function index()
     {
-        $artist = Artist::firstWhere('user_id', Auth::id())->load('ratings');
-        $ratings = $artist->ratings;
-        $ratings = $ratings->sortByDesc(function($rating) {
-            return $rating->pivot->rating_date;
-        });
+        if ( Artist::firstWhere('user_id', Auth::id()) ) {
+            $artist = Artist::firstWhere('user_id', Auth::id())->load('ratings');
+            $ratings = $artist->ratings;
+            $ratings = $ratings->sortByDesc(function($rating) {
+                return $rating->pivot->rating_date;
+            });
 
-        return view('admin.ratings.index', compact('ratings'));
+            return view('admin.ratings.index', compact('ratings'));
+        } else {
+            return redirect()->route('admin.artists.create')->with('message', "Crea il tuo profilo Artista per continuare");
+        }
     }
 
     /**
