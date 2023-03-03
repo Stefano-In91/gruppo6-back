@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Schema;
 use App\Models\Review;
 use App\Models\Artist;
 use Illuminate\Support\Str;
+use Illuminate\Support\Carbon;
 
 class ReviewSeeder extends Seeder
 {
@@ -30,7 +31,8 @@ class ReviewSeeder extends Seeder
                 $new_review->artist_id = $artist->id;
                 $new_review->title = $faker->sentence(3, false);
                 $new_review->review_text = $faker->text(300);
-                $new_review->date = $faker->dateTimeBetween('-3 month', 'now');
+                $date = $faker->dateTimeBetween('-3 month', 'now');
+                $new_review->date = Carbon::parse($date);
                 $slug_matrix = "$new_review->title $new_review->date";
                 $new_review->slug = Str::slug( $slug_matrix );
                 $new_review->save();
