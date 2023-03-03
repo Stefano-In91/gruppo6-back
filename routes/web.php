@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\ArtistController;
 use App\Http\Controllers\Admin\MessageController;
 use App\Http\Controllers\Admin\SponsorController;
 use App\Http\Controllers\Admin\ReviewController;
+use App\Http\Controllers\Admin\RatingController;
 use App\Http\Controllers\Admin\TechniqueController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -40,6 +41,7 @@ Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () 
     // Route::resource('techniques', TechniqueController::class)->parameters(['techniques' => 'technique:slug']);
     Route::resource('messages', MessageController::class)->parameters(['messages' => 'message:slug']);
     Route::resource('reviews', ReviewController::class)->parameters(['reviews' => 'review:slug']);
+    Route::resource('ratings', RatingController::class)->parameters(['ratings' => 'rating:slug']);
     Route::resource('sponsors', SponsorController::class)->parameters(['sponsors' => 'sponsor:slug']);
 });
 
