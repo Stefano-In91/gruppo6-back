@@ -20,9 +20,12 @@ class ReviewController extends Controller
     public function index()
     {
         // restituisce lista recensioni in base all'id di autenticazione linkato all'artista
-        $user_id = Auth::id();
-        $artist = Artist::firstWhere('user_id', $user_id);
+        $artist = Artist::firstWhere('user_id', Auth::id());
         $reviews = Review::where('artist_id', $artist->id)->get();
+
+        $reviews = $reviews->sortByDesc(function($review) {
+            return $review->date;
+        });
 
         return view('admin.reviews.index', compact('reviews'));
     }

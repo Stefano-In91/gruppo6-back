@@ -13,6 +13,7 @@
       <table class="table table-striped table-inverse table-responsive">
         <thead>
           <tr>
+            <th scope="col">#</th>
             <th scope="col">Titolo Recensione</th>
             <th scope="col">Testo</th>
             <th scope="col">Data</th>
@@ -23,6 +24,7 @@
 
           @foreach ($reviews as $review)
             <tr>
+              <td>{{ $loop->iteration }}</td>
               <td>{{ $review->title }}</td>
               <td>{{ $review->review_text }}</td>
               <td>{{ $review->date }}</td>
