@@ -30,7 +30,7 @@ class ReviewSeeder extends Seeder
                 $new_review->artist_id = $artist->id;
                 $new_review->title = $faker->sentence(3, false);
                 $new_review->review_text = $faker->text(300);
-                $new_review->date = $faker->date();
+                $new_review->date = $faker->dateTimeBetween('-3 month', 'now');
                 $slug_matrix = "$new_review->title $new_review->date";
                 $new_review->slug = Str::slug( $slug_matrix );
                 $new_review->save();

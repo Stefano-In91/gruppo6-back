@@ -33,7 +33,7 @@ class ArtistRatingSeeder extends Seeder
                 DB::table('artist_rating')->insert([
                     'artist_id' => $artist->id,
                     'rating_id' => rand(1, 5),
-                    'rating_date' => $faker->dateTimeBetween('-1 year', 'now'),
+                    'rating_date' => $faker->dateTimeBetween('-2 months', 'now'),
                 ]); 
             }    
         }
