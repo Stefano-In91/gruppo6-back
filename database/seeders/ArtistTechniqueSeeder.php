@@ -26,12 +26,12 @@ class ArtistTechniqueSeeder extends Seeder
         Schema::enableForeignKeyConstraints();
 
         $techniques = Technique::all();
-        // cicla sugli artisti 
         $artists = Artist::all();
+        // cicla sugli artisti esistenti
         foreach ($artists as $artist) {
             $added_tech = 0;
             $count = 0;
-            // cicla sulle tecniche esistenti e le aggiunge random (20% successo)
+            // cicla sulle tecniche esistenti e le aggiunge randomicamente (20% successo)
             foreach ($techniques as $technique) {
                 $forse_aggiungo = rand(1, 5);
                 if($forse_aggiungo === 1){

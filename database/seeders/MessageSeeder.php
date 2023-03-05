@@ -27,7 +27,8 @@ class MessageSeeder extends Seeder
         
         $artists = Artist::all();
         foreach ($artists as $artist) {
-            for ($r=0; $r < 5; $r++){ //5 messaggi per artista
+            // per ogni artista aggiunge da 1 a 10 messaggi ricevuti randomicamente
+            for ($r=0; $r < rand(1, 10); $r++){
                 $new_message = new Message();
                 $new_message->artist_id = $artist->id;
                 $new_message->title = $faker->sentence(3, false);

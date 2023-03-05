@@ -25,8 +25,9 @@ class ReviewSeeder extends Seeder
         Schema::enableForeignKeyConstraints();
         
         $artists = Artist::all();
-        foreach ($artists as $artist) { //cicla sugli artisti
-            for ($r=0; $r < 5; $r++){ //5 review per artista
+        foreach ($artists as $artist) { 
+            // per ogni artista, aggiunge da 2 a 10 recensioni randomicamente
+            for ($r=0; $r < rand(2, 10); $r++){ 
                 $new_review = new Review();
                 $new_review->artist_id = $artist->id;
                 $new_review->title = $faker->sentence(3, false);

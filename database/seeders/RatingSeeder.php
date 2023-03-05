@@ -21,9 +21,8 @@ class RatingSeeder extends Seeder
         Schema::enableForeignKeyConstraints();
 
         $ratings = [1, 2, 3, 4, 5];
-
+        // creazione rating base senza relazioni con artista
         foreach ($ratings as $rating) {
-
             $new_rating = new Rating();
             $new_rating->rating = $rating;
             $new_rating->save();

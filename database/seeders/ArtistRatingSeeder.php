@@ -26,11 +26,11 @@ class ArtistRatingSeeder extends Seeder
         DB::table('artist_rating')->truncate();
         Schema::enableForeignKeyConstraints();
 
-        // cicla sugli artisti 
         $artists = Artist::all();
+        // cicla sugli artisti esistenti
         foreach ($artists as $artist) {
-            // aggiunge 10 rating random per artista
-            for ($r=0; $r < 10; $r++) { 
+            // aggiunge da 1 a 10 rating randomicamente per artista
+            for ($r=0; $r < rand(1, 10); $r++) { 
                 $date = $faker->dateTimeBetween('-3 months', 'now');
                 DB::table('artist_rating')->insert([
                     'artist_id' => $artist->id,

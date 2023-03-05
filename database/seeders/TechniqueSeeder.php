@@ -24,9 +24,8 @@ class TechniqueSeeder extends Seeder
         Schema::enableForeignKeyConstraints();
 
         $techniques = ['Musicista', 'Pittore', 'Attore', 'Scultore', 'Fotografo', 'Regista', 'VideoMaker'];
-
+        // creazione tecniche base senza relazione artista
         foreach ($techniques as $technique) {
-
             $new_technique = new Technique();
             $new_technique->name = $technique;
             $new_technique->description = $faker->text(500);
