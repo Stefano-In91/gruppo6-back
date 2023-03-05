@@ -32,7 +32,7 @@
             </div>
             <div class="head-nav d-none d-md-block">
                 <ul>
-                    <li><a class="nav-link" href="http://localhost:5173/">{{ __('Home') }}</a></li>
+                    <li><a class="nav-link" href="http://localhost:5174/">{{ __('Home') }}</a></li>
                     <li>Esplora</li>
                     @guest
                     <li><a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a></li>
